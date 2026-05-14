@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contacto — Nó Digital" description="Entre em contacto connosco para criar o website de casamento perfeito.">
+  <!-- Hero -->
+  <section class="section-padding pt-32">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
+      <!-- Left: Info -->
+      <div>
+        <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Contacto</p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-olive-900 mb-6">
+          Vamos criar algo bonito juntos
+        </h1>
+        <p class="text-olive-600 text-lg leading-relaxed mb-10">
+          Contem-nos sobre o vosso casamento. Respondemos em menos de 24 horas 
+          com uma proposta personalizada.
+        </p>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl">📧</span>
+            <div>
+              <p class="font-medium text-olive-800">Email</p>
+              <a href="mailto:ola@nodigital.pt" class="text-gold-500 hover:text-gold-600 transition-colors">
+                ola@nodigital.pt
+              </a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-2xl">📱</span>
+            <div>
+              <p class="font-medium text-olive-800">WhatsApp</p>
+              <a href="https://wa.me/351912345678" class="text-gold-500 hover:text-gold-600 transition-colors">
+                +351 912 345 678
+              </a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-2xl">📍</span>
+            <div>
+              <p class="font-medium text-olive-800">Localização</p>
+              <p class="text-olive-600">Lisboa, Portugal</p>
+              <p class="text-olive-500 text-sm">Trabalhamos remotamente com casais em todo o país</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-2xl">⏰</span>
+            <div>
+              <p class="font-medium text-olive-800">Tempo de resposta</p>
+              <p class="text-olive-600">Menos de 24 horas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg border border-beige-200">
+        <h2 class="font-serif text-2xl font-bold text-olive-900 mb-6">Pedir Orçamento</h2>
+
+        <form id="contact-form" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-olive-700 mb-1">Nome *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50 text-olive-800 
+                       focus:border-gold-400 focus:ring-2 focus:ring-gold-100 focus:outline-none transition-all"
+                placeholder="O vosso nome"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-olive-700 mb-1">Email *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50 text-olive-800 
+                       focus:border-gold-400 focus:ring-2 focus:ring-gold-100 focus:outline-none transition-all"
+                placeholder="email@exemplo.pt"
+              />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="phone" class="block text-sm font-medium text-olive-700 mb-1">Telemóvel</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50 text-olive-800 
+                       focus:border-gold-400 focus:ring-2 focus:ring-gold-100 focus:outline-none transition-all"
+                placeholder="+351 9XX XXX XXX"
+              />
+            </div>
+            <div>
+              <label for="date" class="block text-sm font-medium text-olive-700 mb-1">Data do casamento</label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                class="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50 text-olive-800 
+                       focus:border-gold-400 focus:ring-2 focus:ring-gold-100 focus:outline-none transition-all"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="guests" class="block text-sm font-medium text-olive-700 mb-1">Número de convidados (aprox.)</label>
+            <select
+              id="guests"
+              name="guests"
+              class="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50 text-olive-800 
+                     focus:border-gold-400 focus:ring-2 focus:ring-gold-100 focus:outline-none transition-all"
+            >
+              <option value="">Selecionar...</option>
+              <option value="<50">Menos de 50</option>
+              <option value="50-100">50 a 100</option>
+              <option value="100-200">100 a 200</option>
+              <option value="200+">Mais de 200</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="plan" class="block text-sm font-medium text-olive-700 mb-1">Plano de interesse</label>
+            <select
+              id="plan"
+              name="plan"
+              class="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50 text-olive-800 
+                     focus:border-gold-400 focus:ring-2 focus:ring-gold-100 focus:outline-none transition-all"
+            >
+              <option value="">Selecionar...</option>
+              <option value="essencial">Essencial (299€)</option>
+              <option value="premium">Premium (499€)</option>
+              <option value="medida">À Medida</option>
+              <option value="indeciso">Ainda não sei</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-olive-700 mb-1">Mensagem *</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="4"
+              class="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50 text-olive-800 
+                     focus:border-gold-400 focus:ring-2 focus:ring-gold-100 focus:outline-none transition-all resize-none"
+              placeholder="Contem-nos sobre o vosso casamento — local, estilo, o que imaginam para o website..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary w-full text-lg py-4">
+            Enviar Pedido →
+          </button>
+
+          <div id="form-feedback" class="hidden text-center p-4 rounded-xl"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const feedback = document.getElementById('form-feedback');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const data = new FormData(form);
+    const entries = Object.fromEntries(data.entries());
+    console.log('Contact form submission:', entries);
+
+    // Show success (replace with actual form handler like Formspree, Netlify Forms, etc.)
+    if (feedback) {
+      feedback.className = 'text-center p-4 rounded-xl bg-green-50 text-green-700 border border-green-200';
+      feedback.textContent = '✅ Mensagem enviada com sucesso! Respondemos em breve.';
+    }
+
+    form.reset();
+  });
+</script>

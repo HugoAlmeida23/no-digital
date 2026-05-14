@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features = [
+  { icon: '✉️', title: 'Convite Animado', desc: 'Envelope interativo com selo de cera e animação cinematográfica.' },
+  { icon: '🔐', title: 'Quiz Pessoal', desc: 'Pergunta personalizada que torna o acesso exclusivo e divertido.' },
+  { icon: '📸', title: 'Galeria ao Vivo', desc: 'Fotos dos convidados em tempo real durante o evento.' },
+  { icon: '🪑', title: 'Mapa de Mesas', desc: 'Planta interativa com zoom animado para cada convidado.' },
+  { icon: '📋', title: 'RSVP Inteligente', desc: 'Confirmação com acompanhantes, alergias e mensagens.' },
+  { icon: '⏱️', title: 'Countdown', desc: 'Contagem decrescente elegante até ao grande dia.' },
+];
+
+const stats = [
+  { value: '50+', label: 'Casamentos' },
+  { value: '10k+', label: 'Convidados Encantados' },
+  { value: '100%', label: 'Satisfação' },
+  { value: '0€', label: 'Custos de Hosting' },
+];
+
+const testimonials = [
+  { name: 'Ana & Pedro', location: 'Lisboa', text: 'Os nossos convidados ficaram maravilhados com o convite animado. Recebemos elogios durante meses!' },
+  { name: 'Mariana & Tiago', location: 'Porto', text: 'A galeria ao vivo foi o ponto alto. Temos centenas de fotos espontâneas que nunca teríamos de outra forma.' },
+  { name: 'Catarina & João', location: 'Algarve', text: 'O mapa de mesas interativo poupou-nos imenso stress no dia. Ninguém se perdeu!' },
+];
+---
+
+<Layout>
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center justify-center section-padding pt-32 overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-gold-200/30 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-olive-200/20 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto text-center">
+      <p class="text-gold-500 font-medium tracking-wide uppercase text-sm mb-4">Websites de Casamento Premium</p>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-olive-900 leading-tight mb-6">
+        O vosso casamento merece<br />
+        <span class="text-gold-500">um website inesquecível</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-olive-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Criamos experiências digitais elegantes e interativas que encantam os vossos convidados 
+        — do convite animado à galeria de fotos ao vivo.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contacto" class="btn-primary text-lg px-10 py-4">
+          Pedir Orçamento Grátis
+        </a>
+        <a href="/portfolio" class="btn-outline text-lg px-10 py-4">
+          Ver Exemplos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-olive-900 py-16 px-4">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {stats.map((stat) => (
+        <div>
+          <p class="font-serif text-3xl md:text-4xl font-bold text-gold-400">{stat.value}</p>
+          <p class="text-beige-300 text-sm mt-1">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Features Preview -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Tudo incluído</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900 mb-4">
+          Funcionalidades que fazem a diferença
+        </h2>
+        <p class="text-olive-600 max-w-xl mx-auto">
+          Cada detalhe pensado para criar uma experiência premium para os vossos convidados.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((f) => (
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-beige-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <span class="text-4xl block mb-4">{f.icon}</span>
+            <h3 class="font-serif text-xl font-semibold text-olive-800 mb-2">{f.title}</h3>
+            <p class="text-olive-600 text-sm leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/funcionalidades" class="btn-outline">
+          Ver todas as funcionalidades →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section-padding bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Testemunhos</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900">
+          O que dizem os nossos casais
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {testimonials.map((t) => (
+          <div class="bg-beige-50 rounded-2xl p-8 border border-beige-200">
+            <div class="text-gold-400 text-3xl mb-4">"</div>
+            <p class="text-olive-700 leading-relaxed mb-6">{t.text}</p>
+            <div>
+              <p class="font-semibold text-olive-800">{t.name}</p>
+              <p class="text-olive-500 text-sm">{t.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding bg-gradient-to-br from-olive-900 to-olive-950 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">
+        Prontos para criar algo especial?
+      </h2>
+      <p class="text-beige-300 text-lg mb-8 leading-relaxed">
+        Cada casamento é único. Vamos criar juntos o website perfeito para o vosso dia.
+      </p>
+      <a href="/contacto" class="btn-primary text-lg px-10 py-4 bg-gold-400 hover:bg-gold-500">
+        Falar Connosco →
+      </a>
+    </div>
+  </section>
+</Layout>

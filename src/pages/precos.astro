@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const plans = [
+  {
+    name: 'Essencial',
+    price: '299',
+    description: 'Para casamentos íntimos que querem um toque digital elegante.',
+    features: [
+      'Convite animado com selo de cera',
+      'Hero com foto do casal',
+      'Countdown ao vivo',
+      'Informação de cerimónia e festa',
+      'Timeline do dia',
+      'RSVP básico (sem acompanhantes)',
+      'FAQ personalizável',
+      'Contactos',
+      'Tema claro/escuro',
+      'Deploy no GitHub Pages',
+      'Domínio personalizado',
+    ],
+    highlighted: false,
+  },
+  {
+    name: 'Premium',
+    price: '499',
+    description: 'A experiência completa para casamentos que querem impressionar.',
+    features: [
+      'Tudo do plano Essencial',
+      'Quiz pessoal (controlo de acesso)',
+      'Galeria de fotos ao vivo',
+      'Mapa de mesas interativo',
+      'RSVP com acompanhantes e alergias',
+      'Ementa completa',
+      'Dress code',
+      'Love story com galeria',
+      'Lista de presentes / Lua-de-mel',
+      'Painel de administração',
+      'Moderação de fotos',
+      'Check-in de convidados',
+      'Exportação CSV',
+    ],
+    highlighted: true,
+  },
+  {
+    name: 'À Medida',
+    price: 'Sob consulta',
+    description: 'Para casamentos com necessidades especiais ou funcionalidades extra.',
+    features: [
+      'Tudo do plano Premium',
+      'Design totalmente personalizado',
+      'Funcionalidades à medida',
+      'Integrações especiais',
+      'Website bilingue',
+      'Suporte prioritário',
+      'Reuniões de acompanhamento',
+      'Alterações ilimitadas',
+    ],
+    highlighted: false,
+  },
+];
+
+const faqs = [
+  { q: 'Quanto tempo demora a criar o website?', a: 'Normalmente entre 1 a 2 semanas após recebermos todos os conteúdos (textos, fotos, detalhes do evento).' },
+  { q: 'Preciso de conhecimentos técnicos?', a: 'Não! Nós tratamos de tudo. Vocês só precisam de nos enviar os conteúdos e preferências.' },
+  { q: 'O website fica online para sempre?', a: 'Sim! Como usamos GitHub Pages (gratuito), o site fica online sem custos mensais. Podem mantê-lo como recordação.' },
+  { q: 'Posso fazer alterações depois?', a: 'Claro! Incluímos 2 rondas de revisões no preço. Alterações adicionais têm um custo simbólico.' },
+  { q: 'E se precisar de ajuda no dia do casamento?', a: 'No plano Premium, oferecemos suporte por WhatsApp no dia do evento para qualquer questão técnica.' },
+  { q: 'Aceitam pagamento em prestações?', a: 'Sim! Podem pagar 50% no início e 50% na entrega final.' },
+];
+---
+
+<Layout title="Preços — Nó Digital" description="Planos e preços para o vosso website de casamento. A partir de 299€.">
+  <!-- Hero -->
+  <section class="section-padding pt-32 text-center">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Preços</p>
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-olive-900 mb-4">
+        Investimento transparente
+      </h1>
+      <p class="text-olive-600 text-lg leading-relaxed">
+        Sem surpresas, sem custos escondidos. Escolham o plano que melhor se adapta ao vosso casamento.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="section-padding pt-8">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+      {plans.map((plan) => (
+        <div class={`rounded-2xl p-8 border ${plan.highlighted ? 'bg-olive-900 border-gold-400 text-white shadow-2xl scale-105' : 'bg-white border-beige-200 shadow-sm'} transition-all`}>
+          {plan.highlighted && (
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider bg-gold-400 text-olive-900 px-3 py-1 rounded-full mb-4">
+              Mais Popular
+            </span>
+          )}
+          <h3 class={`font-serif text-2xl font-bold mb-1 ${plan.highlighted ? 'text-white' : 'text-olive-900'}`}>
+            {plan.name}
+          </h3>
+          <p class={`text-sm mb-6 ${plan.highlighted ? 'text-beige-300' : 'text-olive-500'}`}>
+            {plan.description}
+          </p>
+          <div class="mb-6">
+            {plan.price === 'Sob consulta' ? (
+              <span class={`font-serif text-2xl font-bold ${plan.highlighted ? 'text-gold-400' : 'text-olive-900'}`}>
+                Sob consulta
+              </span>
+            ) : (
+              <div class="flex items-baseline gap-1">
+                <span class={`font-serif text-4xl font-bold ${plan.highlighted ? 'text-gold-400' : 'text-olive-900'}`}>
+                  {plan.price}€
+                </span>
+                <span class={`text-sm ${plan.highlighted ? 'text-beige-400' : 'text-olive-500'}`}>
+                  pagamento único
+                </span>
+              </div>
+            )}
+          </div>
+
+          <ul class="space-y-3 mb-8">
+            {plan.features.map((f) => (
+              <li class={`flex items-start gap-2 text-sm ${plan.highlighted ? 'text-beige-200' : 'text-olive-600'}`}>
+                <span class="text-gold-400 mt-0.5 flex-shrink-0">✓</span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="/contacto"
+            class={`block text-center py-3 rounded-full font-semibold transition-all ${
+              plan.highlighted
+                ? 'bg-gold-400 hover:bg-gold-500 text-olive-900'
+                : 'border-2 border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-white'
+            }`}
+          >
+            Escolher {plan.name}
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-padding bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="font-serif text-3xl font-bold text-olive-900 text-center mb-12">
+        Perguntas Frequentes
+      </h2>
+
+      <div class="space-y-4">
+        {faqs.map((faq, i) => (
+          <div class="border border-beige-200 rounded-xl overflow-hidden">
+            <button
+              class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left hover:bg-beige-50 transition-colors"
+              aria-expanded="false"
+              type="button"
+            >
+              <span class="font-medium text-olive-800 pr-4">{faq.q}</span>
+              <span class="text-gold-500 text-xl flex-shrink-0 faq-icon transition-transform">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-olive-600 leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding bg-gradient-to-br from-olive-900 to-olive-950 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="font-serif text-3xl font-bold text-white mb-4">Vamos começar?</h2>
+      <p class="text-beige-300 mb-8">Enviem-nos uma mensagem e respondemos em menos de 24 horas.</p>
+      <a href="/contacto" class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
+        Pedir Orçamento Grátis →
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling as HTMLElement;
+      const icon = btn.querySelector('.faq-icon') as HTMLElement;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      document.querySelectorAll('.faq-btn').forEach((other) => {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          (other.nextElementSibling as HTMLElement)?.classList.add('hidden');
+          const otherIcon = other.querySelector('.faq-icon') as HTMLElement;
+          if (otherIcon) { otherIcon.textContent = '+'; otherIcon.style.transform = ''; }
+        }
+      });
+
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        content?.classList.add('hidden');
+        if (icon) { icon.textContent = '+'; icon.style.transform = ''; }
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        content?.classList.remove('hidden');
+        if (icon) { icon.textContent = '×'; icon.style.transform = 'rotate(45deg)'; }
+      }
+    });
+  });
+</script>
