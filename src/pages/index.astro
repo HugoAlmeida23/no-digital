@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const features = [
   { icon: '✉️', title: 'Convite Animado', desc: 'Envelope interativo com selo de cera e animação cinematográfica.' },
   { icon: '🔐', title: 'Quiz Pessoal', desc: 'Pergunta personalizada que torna o acesso exclusivo e divertido.' },
@@ -44,10 +46,10 @@ const testimonials = [
         — do convite animado à galeria de fotos ao vivo.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/contacto" class="btn-primary text-lg px-10 py-4">
+        <a href={`${base}contacto`} class="btn-primary text-lg px-10 py-4">
           Pedir Orçamento Grátis
         </a>
-        <a href="/portfolio" class="btn-outline text-lg px-10 py-4">
+        <a href={`${base}portfolio`} class="btn-outline text-lg px-10 py-4">
           Ver Exemplos
         </a>
       </div>
@@ -90,7 +92,7 @@ const testimonials = [
       </div>
 
       <div class="text-center mt-12">
-        <a href="/funcionalidades" class="btn-outline">
+        <a href={`${base}funcionalidades`} class="btn-outline">
           Ver todas as funcionalidades →
         </a>
       </div>
@@ -131,9 +133,10 @@ const testimonials = [
       <p class="text-beige-300 text-lg mb-8 leading-relaxed">
         Cada casamento é único. Vamos criar juntos o website perfeito para o vosso dia.
       </p>
-      <a href="/contacto" class="btn-primary text-lg px-10 py-4 bg-gold-400 hover:bg-gold-500">
+      <a href={`${base}contacto`} class="btn-primary text-lg px-10 py-4 bg-gold-400 hover:bg-gold-500">
         Falar Connosco →
       </a>
     </div>
   </section>
 </Layout>
+
