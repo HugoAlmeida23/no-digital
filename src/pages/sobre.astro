@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Sobre — Nó Digital" description="Conheça quem está por trás da Nó Digital.">
+  <section class="section-padding pt-32">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Sobre</p>
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-olive-900 mb-8">
+        Quem está por trás
+      </h1>
+
+      <!-- Foto -->
+      <div class="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden shadow-lg border-4 border-beige-200">
+        <img
+          src={`${base}images/hugo.jpeg`}
+          alt="Hugo Almeida"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <p class="text-olive-700 text-lg leading-relaxed mb-10">
+        Sou o Hugo, developer freelancer baseado em Portugal. Além do meu trabalho na área, crio websites de casamento porque acredito 
+        que o vosso dia merece uma presença digital tão especial quanto o evento em si! Depois de construir um para um membro de família, 
+        senti que haveriam mais casais a procurar algo simples, acessível e prático. 
+        Falam diretamente comigo, do início ao fim — por mensagem, videochamada ou até 
+        presencialmente em casos que seja necessário — mantendo sempre a transparência.
+      </p>
+
+      <a href={`${base}contacto`} class="btn-primary text-lg px-10 py-4">
+        Falar Comigo →
+      </a>
+    </div>
+  </section>
+</Layout>
