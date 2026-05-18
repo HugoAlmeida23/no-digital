@@ -4,7 +4,6 @@ import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;const plans = [
   {
     name: 'Essencial',
-    price: '299',
     description: 'Para casamentos íntimos que querem um toque digital elegante.',
     features: [
       'Convite animado com selo de cera',
@@ -23,7 +22,6 @@ const base = import.meta.env.BASE_URL;const plans = [
   },
   {
     name: 'Premium',
-    price: '499',
     description: 'A experiência completa para casamentos que querem impressionar.',
     features: [
       'Tudo do plano Essencial',
@@ -44,7 +42,6 @@ const base = import.meta.env.BASE_URL;const plans = [
   },
   {
     name: 'À Medida',
-    price: 'Sob consulta',
     description: 'Para casamentos com necessidades especiais ou funcionalidades extra.',
     features: [
       'Tudo do plano Premium',
@@ -64,22 +61,22 @@ const faqs = [
   { q: 'Quanto tempo demora a criar o website?', a: 'Normalmente entre 1 a 2 semanas após recebermos todos os conteúdos (textos, fotos, detalhes do evento).' },
   { q: 'Preciso de conhecimentos técnicos?', a: 'Não! Nós tratamos de tudo. Vocês só precisam de nos enviar os conteúdos e preferências.' },
   { q: 'O website fica online para sempre?', a: 'Sim! Como usamos GitHub Pages (gratuito), o site fica online sem custos mensais. Podem mantê-lo como recordação.' },
-  { q: 'Posso fazer alterações depois?', a: 'Claro! Incluímos 2 rondas de revisões no preço. Alterações adicionais têm um custo simbólico.' },
+  { q: 'Posso fazer alterações depois?', a: 'Claro! Incluímos revisões no processo. Alterações adicionais após entrega têm um custo simbólico.' },
   { q: 'E se precisar de ajuda no dia do casamento?', a: 'No plano Premium, oferecemos suporte por WhatsApp no dia do evento para qualquer questão técnica.' },
   { q: 'Aceitam pagamento em prestações?', a: 'Sim! Podem pagar 50% no início e 50% na entrega final.' },
 ];
 ---
 
-<Layout title="Preços — Nó Digital" description="Planos e preços para o vosso website de casamento. A partir de 299€.">
+<Layout title="Preços — Nó Digital" description="Planos para o vosso website de casamento. Peçam um orçamento personalizado.">
   <!-- Hero -->
   <section class="section-padding pt-32 text-center">
     <div class="max-w-3xl mx-auto">
-      <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Preços</p>
+      <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Planos</p>
       <h1 class="font-serif text-4xl sm:text-5xl font-bold text-olive-900 mb-4">
-        Investimento transparente
+        Encontrem o plano ideal
       </h1>
       <p class="text-olive-600 text-lg leading-relaxed">
-        Sem surpresas, sem custos escondidos. Escolham o plano que melhor se adapta ao vosso casamento.
+        Cada casamento é único. Peçam um orçamento personalizado e recebem uma proposta à medida em menos de 24 horas.
       </p>
     </div>
   </section>
@@ -101,20 +98,9 @@ const faqs = [
             {plan.description}
           </p>
           <div class="mb-6">
-            {plan.price === 'Sob consulta' ? (
-              <span class={`font-serif text-2xl font-bold ${plan.highlighted ? 'text-gold-400' : 'text-olive-900'}`}>
-                Sob consulta
-              </span>
-            ) : (
-              <div class="flex items-baseline gap-1">
-                <span class={`font-serif text-4xl font-bold ${plan.highlighted ? 'text-gold-400' : 'text-olive-900'}`}>
-                  {plan.price}€
-                </span>
-                <span class={`text-sm ${plan.highlighted ? 'text-beige-400' : 'text-olive-500'}`}>
-                  pagamento único
-                </span>
-              </div>
-            )}
+            <span class={`font-serif text-xl font-bold ${plan.highlighted ? 'text-gold-400' : 'text-gold-500'}`}>
+              Pedir Orçamento
+            </span>
           </div>
 
           <ul class="space-y-3 mb-8">
@@ -134,7 +120,7 @@ const faqs = [
                 : 'border-2 border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-white'
             }`}
           >
-            Escolher {plan.name}
+            Pedir Orçamento
           </a>
         </div>
       ))}
