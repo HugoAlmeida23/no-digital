@@ -167,23 +167,45 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
+  import { supabase } from '../lib/supabase';
+
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const feedback = document.getElementById('form-feedback');
 
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Collect form data
-    const data = new FormData(form);
-    const entries = Object.fromEntries(data.entries());
-    console.log('Contact form submission:', entries);
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'A enviar...';
 
-    // Show success (replace with actual form handler like Formspree, Netlify Forms, etc.)
-    if (feedback) {
-      feedback.className = 'text-center p-4 rounded-xl bg-green-50 text-green-700 border border-green-200';
-      feedback.textContent = '✅ Mensagem enviada com sucesso! Respondemos em breve.';
+    const data = new FormData(form);
+
+    const { error } = await supabase.from('contacts').insert({
+      name: data.get('name'),
+      email: data.get('email'),
+      phone: data.get('phone') || null,
+      wedding_date: data.get('date') || null,
+      guest_count: data.get('guests') || null,
+      plan: data.get('plan') || null,
+      message: data.get('message'),
+    });
+
+    if (error) {
+      if (feedback) {
+        feedback.className = 'text-center p-4 rounded-xl bg-red-50 text-red-700 border border-red-200';
+        feedback.textContent = '❌ Erro ao enviar. Tente novamente ou contacte-nos diretamente.';
+      }
+      console.error('Supabase error:', error);
+    } else {
+      if (feedback) {
+        feedback.className = 'text-center p-4 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        feedback.textContent = '✅ Mensagem enviada com sucesso! Respondemos em breve.';
+      }
+      form.reset();
     }
 
-    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enviar Pedido →';
   });
 </script>

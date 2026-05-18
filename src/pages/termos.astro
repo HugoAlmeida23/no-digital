@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Termos e Condições — Nó Digital" description="Termos e condições de utilização do website e serviços da Nó Digital.">
+  <section class="section-padding pt-32">
+    <div class="max-w-3xl mx-auto prose prose-olive">
+      <h1 class="font-serif text-4xl font-bold text-olive-900 mb-8">Termos e Condições</h1>
+      <p class="text-sm text-olive-500 mb-8">Última atualização: Maio 2026</p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">1. Identificação</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        O presente website é propriedade e operado pela Nó Digital, com sede em Lisboa, Portugal. 
+        Contacto: ola@nodigital.pt.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">2. Objeto</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        A Nó Digital presta serviços de criação de websites de casamento personalizados. 
+        Os presentes termos regulam a utilização deste website e a relação pré-contratual 
+        estabelecida através do formulário de contacto.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">3. Utilização do Website</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">Ao utilizar este website, compromete-se a:</p>
+      <ul class="list-disc pl-6 text-olive-700 space-y-2 mb-4">
+        <li>Fornecer informações verdadeiras e atualizadas no formulário de contacto</li>
+        <li>Não utilizar o website para fins ilegais ou não autorizados</li>
+        <li>Não tentar aceder a áreas restritas do website ou dos seus sistemas</li>
+        <li>Não reproduzir, duplicar ou copiar conteúdos sem autorização prévia</li>
+      </ul>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">4. Serviços</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        Os serviços prestados pela Nó Digital são formalizados através de proposta comercial individual, 
+        enviada após análise do pedido de orçamento. O formulário de contacto neste website constitui 
+        apenas um pedido de informação e não uma encomenda vinculativa.
+      </p>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        Os preços, prazos e condições específicas são definidos na proposta comercial individual 
+        e no eventual contrato de prestação de serviços.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">5. Propriedade Intelectual</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        Todos os conteúdos deste website — incluindo textos, imagens, design, logótipos e código — 
+        são propriedade da Nó Digital e estão protegidos por direitos de autor e propriedade intelectual. 
+        É proibida a reprodução, distribuição ou utilização sem autorização prévia por escrito.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">6. Limitação de Responsabilidade</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        A Nó Digital esforça-se por manter as informações neste website atualizadas e corretas, 
+        mas não garante a ausência de erros ou omissões. O website é disponibilizado "tal como está", 
+        sem garantias de qualquer tipo.
+      </p>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        Não somos responsáveis por danos diretos ou indiretos resultantes da utilização ou 
+        impossibilidade de utilização deste website.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">7. Links Externos</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        Este website pode conter links para websites de terceiros. Não temos controlo sobre o conteúdo 
+        desses websites e não assumimos qualquer responsabilidade pelo mesmo.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">8. Proteção de Dados</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        O tratamento de dados pessoais é regido pela nossa 
+        <a href={`${base}privacidade`} class="text-gold-500 hover:text-gold-600">Política de Privacidade</a>, 
+        que constitui parte integrante destes termos.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">9. Lei Aplicável e Foro</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        Os presentes termos são regidos pela lei portuguesa. Para a resolução de qualquer litígio 
+        emergente da utilização deste website, será competente o foro da comarca de Lisboa, 
+        com renúncia a qualquer outro.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">10. Alterações</h2>
+      <p class="text-olive-700 leading-relaxed mb-4">
+        Reservamo-nos o direito de alterar estes termos a qualquer momento. As alterações entram 
+        em vigor imediatamente após publicação nesta página. A utilização continuada do website 
+        após alterações constitui aceitação dos novos termos.
+      </p>
+
+      <div class="mt-12 pt-8 border-t border-beige-200">
+        <a href={base} class="text-gold-500 hover:text-gold-600 font-medium">← Voltar ao início</a>
+      </div>
+    </div>
+  </section>
+</Layout>
