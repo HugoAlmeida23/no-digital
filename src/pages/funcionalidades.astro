@@ -1,130 +1,199 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const base = import.meta.env.BASE_URL;const featureGroups = [
+const base = import.meta.env.BASE_URL;
+
+const featureGroups = [
   {
-    category: 'Experiência do Convidado',
+    category: 'Experiência de Entrada',
+    subtitle: 'A primeira impressão que marca',
     features: [
       {
         icon: '✉️',
         title: 'Convite Animado com Selo de Cera',
         desc: 'Os convidados são recebidos com um envelope full-screen. Ao tocar, o selo dourado parte-se, o envelope abre-se e revela um cartão elegante com os nomes, data e local. Partículas douradas flutuam no fundo.',
-        highlights: ['Animação cinematográfica', 'Responsivo mobile + desktop', 'Acessível por teclado'],
+        highlights: ['Animação cinematográfica', 'Responsivo mobile + desktop', 'Acessível por teclado', 'Imagem e vídeo personalizáveis'],
       },
       {
         icon: '🔐',
         title: 'Quiz Pessoal (Controlo de Acesso)',
         desc: 'Uma pergunta personalizada sobre o casal que os convidados devem responder para desbloquear o site. Adiciona um toque íntimo e exclusivo.',
-        highlights: ['Pergunta personalizável', 'Feedback animado', 'Múltiplas tentativas'],
+        highlights: ['Pergunta personalizável', 'Feedback animado', 'Múltiplas tentativas', 'Pode ser desativado'],
       },
       {
-        icon: '📸',
-        title: 'Galeria de Fotos ao Vivo',
-        desc: 'Página dedicada onde os convidados carregam fotos durante o evento. As fotos aparecem instantaneamente para todos em tempo real.',
-        highlights: ['Upload com compressão automática', 'Atualização em tempo real', 'Lightbox com swipe'],
-      },
-      {
-        icon: '🪑',
-        title: 'Mapa de Mesas Interativo',
-        desc: 'Os convidados procuram o seu nome e veem a planta da sala com zoom animado até à sua mesa. O seu lugar é destacado a dourado.',
-        highlights: ['Planta SVG interativa', 'Zoom animado suave', 'Painel com lista de convidados'],
+        icon: '🎉',
+        title: 'Ecrã de Reveal / Surpresa',
+        desc: 'Após o quiz, uma animação de celebração revela o acesso ao site completo — com confetti, mensagem personalizada e transição suave.',
+        highlights: ['Animação de confetti', 'Mensagem customizável', 'Transição cinematográfica'],
       },
     ],
   },
   {
-    category: 'Informação & Logística',
+    category: 'Secções do Website',
+    subtitle: 'Modulares — escolhem o que faz sentido para vocês',
     features: [
+      {
+        icon: '🖼️',
+        title: 'Hero Fullscreen',
+        desc: 'Foto ou ilustração do casal em ecrã inteiro, com nomes elegantes, data do casamento e um scroll suave para a próxima secção.',
+        highlights: ['Foto ou vídeo de fundo', 'Tipografia premium', 'Parallax suave'],
+      },
       {
         icon: '⏱️',
         title: 'Countdown ao Vivo',
         desc: 'Contagem decrescente elegante com dias, horas, minutos e segundos. Muda automaticamente para mensagem especial no dia.',
-        highlights: ['Atualização em tempo real', 'Mensagem personalizada no dia'],
+        highlights: ['Atualização em tempo real', 'Mensagem personalizada no dia', 'Design adaptável'],
       },
       {
         icon: '📍',
         title: 'Locais com Mapa',
-        desc: 'Cards elegantes para cerimónia e festa com fotos, moradas e link direto para Google Maps.',
-        highlights: ['Navegação com um toque', 'Fotos dos locais'],
+        desc: 'Cards elegantes para cerimónia e festa com fotos, moradas e link direto para Google Maps. Os convidados navegam com um toque.',
+        highlights: ['Navegação com um toque', 'Fotos dos locais', 'Links Google Maps'],
       },
       {
         icon: '📅',
         title: 'Timeline do Dia',
-        desc: 'Programa visual com horários, eventos e descrições. Layout alternado no desktop.',
-        highlights: ['Design visual com linha temporal', 'Totalmente personalizável'],
+        desc: 'Programa visual com horários, eventos e descrições. Layout alternado no desktop, cronograma claro no mobile.',
+        highlights: ['Design visual com linha temporal', 'Totalmente personalizável', 'Layout responsivo'],
       },
       {
-        icon: '🍽️',
-        title: 'Ementa Completa',
-        desc: 'Menu organizado por categorias — entradas, pratos, sobremesas e bebidas — com descrições elegantes.',
-        highlights: ['Organizado por curso', 'Tipografia premium'],
+        icon: '💕',
+        title: 'A Nossa História',
+        desc: 'Secção narrativa com texto e fotos que conta a história do casal — do primeiro encontro ao pedido.',
+        highlights: ['Texto + fotos', 'Layout storytelling', 'Galeria integrada'],
       },
-    ],
-  },
-  {
-    category: 'Gestão & Controlo',
-    features: [
+      {
+        icon: '📸',
+        title: 'Galeria de Fotos',
+        desc: 'Galeria de fotos do casal com lightbox elegante, navegação por swipe e zoom. Layout grid ou masonry.',
+        highlights: ['Lightbox com swipe', 'Lazy loading', 'Múltiplos layouts'],
+      },
+      {
+        icon: '🎁',
+        title: 'Lista de Presentes',
+        desc: 'Secção dedicada a presentes ou honeymoon fund, com suporte a MBWay, IBAN, ou links externos.',
+        highlights: ['MBWay, IBAN, PayPal', 'Mensagem personalizada', 'Múltiplos métodos'],
+      },
+      {
+        icon: '👔',
+        title: 'Dress Code',
+        desc: 'Orientações de vestuário com paleta de cores sugerida, exemplos visuais e tom descontraído.',
+        highlights: ['Paleta visual de cores', 'Tom personalizável', 'Exemplos visuais'],
+      },
+      {
+        icon: '❓',
+        title: 'FAQ',
+        desc: 'Perguntas frequentes com accordion expansível — responde às dúvidas dos convidados antes que perguntem.',
+        highlights: ['Accordion animado', 'Ilimitadas perguntas', 'Acessível por teclado'],
+      },
       {
         icon: '📋',
         title: 'RSVP com Acompanhantes',
         desc: 'Formulário completo onde convidados confirmam presença, adicionam acompanhantes (adultos/crianças) e indicam alergias.',
         highlights: ['Gestão de acompanhantes', 'Restrições alimentares', 'Mensagem para os noivos'],
       },
+    ],
+  },
+  {
+    category: 'Páginas Extra',
+    subtitle: 'Funcionalidades que surpreendem no dia',
+    features: [
+      {
+        icon: '📸',
+        title: 'Galeria ao Vivo',
+        desc: 'Página dedicada onde os convidados carregam fotos durante o evento. As fotos aparecem instantaneamente para todos em tempo real — uma experiência colaborativa única.',
+        highlights: ['Upload com compressão automática', 'Atualização em tempo real', 'Infinite scroll', 'Lightbox com swipe', 'Moderação pelo casal'],
+      },
+      {
+        icon: '🪑',
+        title: 'Mapa de Mesas Interativo',
+        desc: 'Os convidados procuram o seu nome e veem a planta SVG da sala com zoom animado até à sua mesa. O seu lugar é destacado a dourado, com lista de quem mais está na mesa.',
+        highlights: ['Planta SVG interativa', 'Zoom animado suave', 'Pesquisa por nome', 'Lista de convidados por mesa'],
+      },
+      {
+        icon: '🍽️',
+        title: 'Ementa do Casamento',
+        desc: 'Menu completo organizado por pratos — entradas, prato principal, sobremesas e bebidas — com descrições elegantes e tipografia premium.',
+        highlights: ['Organizado por curso', 'Tipografia premium', 'Alergias indicadas'],
+      },
+    ],
+  },
+  {
+    category: 'Gestão & Administração',
+    subtitle: 'Painel privado para os noivos',
+    features: [
       {
         icon: '🎛️',
-        title: 'Painel de Administração',
-        desc: 'Dashboard privado para gerir convidados, mesas, fotos e check-in no dia do evento.',
-        highlights: ['Lista de convidados pesquisável', 'Exportação CSV', 'Moderação de fotos'],
+        title: 'Dashboard de Estatísticas',
+        desc: 'Visão geral com total de convidados, confirmados, pendentes e check-ins no dia. Tudo num ecrã.',
+        highlights: ['Dados em tempo real', 'Gráficos visuais', 'Exportação CSV'],
       },
       {
-        icon: '🌙',
-        title: 'Tema Claro/Escuro',
-        desc: 'Os convidados podem alternar entre modo claro e escuro. O tema padrão é configurável.',
-        highlights: ['Preferência guardada', 'Toggle elegante'],
+        icon: '👥',
+        title: 'Gestão de Convidados',
+        desc: 'Lista pesquisável com todos os convidados, com opções de editar, eliminar, marcar check-in e ver detalhes.',
+        highlights: ['Pesquisa e filtros', 'Check-in no dia', 'Edição inline'],
       },
       {
-        icon: '🚀',
-        title: 'Deploy Automático',
-        desc: 'Hosting gratuito no GitHub Pages com deploy automático. Zero custos mensais, velocidade máxima.',
-        highlights: ['Zero custos de hosting', 'SSL automático', 'CDN global'],
+        icon: '🪑',
+        title: 'Gestão de Mesas',
+        desc: 'Criar mesas, definir capacidade, atribuir convidados e ver a ocupação de cada mesa.',
+        highlights: ['Drag and drop', 'Ocupação visual', 'Atribuição rápida'],
+      },
+      {
+        icon: '🖼️',
+        title: 'Moderação de Fotos',
+        desc: 'Ver todas as fotos submetidas pelos convidados, aprovar ou eliminar antes de ficarem visíveis.',
+        highlights: ['Galeria de moderação', 'Aprovar/rejeitar', 'Visibilidade controlada'],
       },
     ],
   },
 ];
+
+const techFeatures = [
+  { icon: '🚀', title: 'Deploy Automático', desc: 'GitHub Actions faz build e deploy a cada alteração. Zero esforço técnico para os noivos.' },
+  { icon: '🌐', title: 'Hosting Gratuito', desc: 'GitHub Pages com SSL automático, CDN global e zero custos mensais.' },
+  { icon: '🔧', title: 'Domínio Personalizado', desc: 'Suporte a custom domains — usem o vosso próprio domínio se quiserem.' },
+  { icon: '🌙', title: 'Tema Claro/Escuro', desc: 'Os convidados podem alternar entre modo claro e escuro. Preferência guardada.' },
+];
 ---
 
-<Layout title="Funcionalidades — Nó Digital" description="Todas as funcionalidades incluídas no vosso website de casamento premium.">
+<Layout title="Funcionalidades — Nó Digital" description="Todas as funcionalidades incluídas no vosso website de casamento premium — da experiência cinematográfica ao painel de administração.">
   <!-- Hero -->
   <section class="section-padding pt-32 text-center">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Funcionalidades</p>
+    <div class="max-w-3xl mx-auto animate-on-scroll">
+      <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Catálogo Completo</p>
       <h1 class="font-serif text-4xl sm:text-5xl font-bold text-olive-900 mb-4">
-        Tudo o que o vosso website precisa
+        Tudo o que o vosso website pode ter
       </h1>
       <p class="text-olive-600 text-lg leading-relaxed">
-        Cada funcionalidade foi desenhada para criar uma experiência premium — 
-        para vocês e para os vossos convidados.
+        Cada funcionalidade é modular — escolhem apenas o que faz sentido para vocês. 
+        Nada é obrigatório, tudo é personalizável.
       </p>
     </div>
   </section>
 
   <!-- Feature Groups -->
-  {featureGroups.map((group) => (
-    <section class="section-padding">
+  {featureGroups.map((group, groupIdx) => (
+    <section class={`section-padding ${groupIdx % 2 === 0 ? '' : 'bg-white'}`}>
       <div class="max-w-7xl mx-auto">
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-olive-900 mb-12 text-center">
-          {group.category}
-        </h2>
+        <div class="text-center mb-12 animate-on-scroll">
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-olive-900 mb-2">
+            {group.category}
+          </h2>
+          <p class="text-olive-500 text-sm">{group.subtitle}</p>
+        </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class={`grid ${group.features.length <= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-8 stagger-children`}>
           {group.features.map((f) => (
-            <div class="bg-white rounded-2xl p-8 shadow-sm border border-beige-200 hover:shadow-md transition-shadow">
-              <span class="text-4xl block mb-4">{f.icon}</span>
+            <div class="group bg-white rounded-2xl p-8 shadow-sm border border-beige-200 hover:shadow-lg hover:border-gold-200 transition-all duration-300">
+              <span class="text-4xl block mb-4 group-hover:scale-110 transition-transform duration-300">{f.icon}</span>
               <h3 class="font-serif text-xl font-semibold text-olive-800 mb-3">{f.title}</h3>
               <p class="text-olive-600 leading-relaxed mb-4">{f.desc}</p>
-              <ul class="space-y-1">
+              <ul class="space-y-1.5">
                 {f.highlights.map((h) => (
                   <li class="text-sm text-olive-500 flex items-center gap-2">
-                    <span class="text-gold-500">✓</span> {h}
+                    <span class="text-gold-500 flex-shrink-0">✓</span> {h}
                   </li>
                 ))}
               </ul>
@@ -135,14 +204,39 @@ const base = import.meta.env.BASE_URL;const featureGroups = [
     </section>
   ))}
 
+  <!-- Customization note -->
+  <section class="section-padding bg-white">
+    <div class="max-w-3xl mx-auto text-center animate-on-scroll">
+      <span class="text-5xl block mb-6">🎨</span>
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-olive-900 mb-4">
+        Tudo é personalizável
+      </h2>
+      <p class="text-olive-600 leading-relaxed mb-6">
+        Nomes, data, locais, fotos, cores, fontes, textos, quais secções incluir, paleta de cores, 
+        tema claro/escuro, pergunta do quiz, métodos de pagamento, ementa, timeline, FAQs, 
+        layout das mesas — literalmente tudo pode ser adaptado ao vosso gosto.
+      </p>
+      <p class="text-olive-500 text-sm">
+        Têm uma ideia que não está na lista? Criamos funcionalidades à medida.
+      </p>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="section-padding bg-olive-900 text-center">
-    <div class="max-w-2xl mx-auto">
+  <section class="section-padding bg-gradient-to-br from-olive-900 to-olive-950 text-center">
+    <div class="max-w-2xl mx-auto animate-on-scroll">
       <h2 class="font-serif text-3xl font-bold text-white mb-4">Gostaram do que viram?</h2>
-      <p class="text-beige-300 mb-8">Vamos criar o website perfeito para o vosso casamento.</p>
-      <a href={`${base}/contacto`} class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
-        Pedir Orçamento →
-      </a>
+      <p class="text-beige-300 mb-8">
+        Agendem uma reunião gratuita e sem compromisso — mostramos a demo completa com tudo a funcionar ao vivo.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href={`${base}/contacto`} class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
+          Agendar Demo Gratuita →
+        </a>
+        <a href={`${base}/precos`} class="text-beige-300 hover:text-white font-medium transition-colors text-sm underline underline-offset-4">
+          Ver planos
+        </a>
+      </div>
     </div>
   </section>
 </Layout>

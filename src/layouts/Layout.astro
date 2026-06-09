@@ -7,12 +7,17 @@ import CookieBanner from '../components/CookieBanner.astro';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
   title = 'Nó Digital — Websites de Casamento Premium',
   description = 'Crie um website de casamento elegante, interativo e inesquecível para os vossos convidados. Feito em Portugal, com amor.',
+  ogImage = '/images/og-cover.jpg',
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -21,13 +26,75 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="author" content="Hugo Almeida — Nó Digital" />
+    <meta name="theme-color" content="#3b4026" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:locale" content="pt_PT" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="canonical" href={canonicalURL.href} />
     <title>{title}</title>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Nó Digital",
+      "description": "Websites de casamento premium, interativos e personalizáveis.",
+      "url": "https://hugoalmeida23.github.io/no-digital",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Porto",
+        "addressCountry": "PT"
+      },
+      "priceRange": "€€",
+      "serviceType": "Web Design",
+      "areaServed": "Portugal"
+    })} />
   </head>
-  <body>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-gold-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-full">
+      Saltar para o conteúdo
+    </a>
     <Navbar />
-    <slot />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
     <Footer />
     <CookieBanner />
+
+    <!-- Scroll animations observer -->
+    <script>
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.animate-on-scroll, .animate-on-scroll-left, .animate-on-scroll-right, .stagger-children').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>

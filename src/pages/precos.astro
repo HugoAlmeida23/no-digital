@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const base = import.meta.env.BASE_URL;const plans = [
+const base = import.meta.env.BASE_URL;
+
+const plans = [
   {
     name: 'Essencial',
     description: 'Para casamentos íntimos que querem um toque digital elegante.',
@@ -17,6 +19,7 @@ const base = import.meta.env.BASE_URL;const plans = [
       'Tema claro/escuro',
       'Deploy no GitHub Pages',
       'Domínio personalizado',
+      'Suporte por email',
     ],
     highlighted: false,
   },
@@ -37,6 +40,7 @@ const base = import.meta.env.BASE_URL;const plans = [
       'Moderação de fotos',
       'Check-in de convidados',
       'Exportação CSV',
+      'Suporte por WhatsApp no dia',
     ],
     highlighted: true,
   },
@@ -57,44 +61,60 @@ const base = import.meta.env.BASE_URL;const plans = [
   },
 ];
 
+const included = [
+  { icon: '🆓', text: 'Hosting gratuito para sempre' },
+  { icon: '🔒', text: 'HTTPS/SSL automático' },
+  { icon: '🌐', text: 'Domínio personalizado incluído' },
+  { icon: '📱', text: '100% responsivo e mobile-first' },
+  { icon: '♿', text: 'Acessibilidade ARIA e teclado' },
+  { icon: '⚡', text: 'Performance máxima (site estático)' },
+];
+
 const faqs = [
-  { q: 'Quanto tempo demora a criar o website?', a: 'Normalmente entre 1 a 2 semanas após recebermos todos os conteúdos (textos, fotos, detalhes do evento).' },
-  { q: 'Preciso de conhecimentos técnicos?', a: 'Não! Nós tratamos de tudo. Vocês só precisam de nos enviar os conteúdos e preferências.' },
-  { q: 'O website fica online para sempre?', a: 'Sim! Como usamos GitHub Pages (gratuito), o site fica online sem custos mensais. Podem mantê-lo como recordação.' },
-  { q: 'Posso fazer alterações depois?', a: 'Claro! Incluímos revisões no processo. Alterações adicionais após entrega têm um custo simbólico.' },
-  { q: 'E se precisar de ajuda no dia do casamento?', a: 'No plano Premium, oferecemos suporte por WhatsApp no dia do evento para qualquer questão técnica.' },
-  { q: 'Aceitam pagamento em prestações?', a: 'Sim! Podem pagar 50% no início e 50% na entrega final.' },
+  { q: 'Quanto tempo demora a criar o website?', a: 'Normalmente entre 1 a 2 semanas após recebermos todos os conteúdos (textos, fotos, detalhes do evento). Projetos mais complexos podem demorar até 3 semanas.' },
+  { q: 'Preciso de conhecimentos técnicos?', a: 'Não! Nós tratamos de tudo. Vocês só precisam de nos enviar os conteúdos e preferências — textos, fotos, cores e detalhes do evento.' },
+  { q: 'O website fica online para sempre?', a: 'Sim! Como usamos GitHub Pages (gratuito), o site fica online sem custos mensais. Podem mantê-lo como recordação do vosso dia.' },
+  { q: 'Posso fazer alterações depois?', a: 'Claro! Incluímos revisões no processo. Alterações menores após entrega são incluídas. Alterações adicionais maiores têm um custo simbólico.' },
+  { q: 'E se precisar de ajuda no dia do casamento?', a: 'No plano Premium, oferecemos suporte por WhatsApp no dia do evento para qualquer questão técnica — galeria, mapa de mesas, check-in, etc.' },
+  { q: 'Aceitam pagamento em prestações?', a: 'Sim! Podem pagar 50% no início e 50% na entrega final. Para o plano À Medida, podemos definir condições personalizadas.' },
+  { q: 'Como funciona a reunião gratuita?', a: 'Agendamos uma videochamada onde mostramos a demo completa já preparada — com todas as funcionalidades a funcionar ao vivo. Veem o produto real, fazem perguntas e decidem sem qualquer compromisso.' },
+  { q: 'Os dados dos convidados estão seguros?', a: 'Sim. Usamos Supabase com infraestrutura na UE, encriptação em trânsito (HTTPS) e não partilhamos dados com terceiros. Cumpre o RGPD.' },
 ];
 ---
 
-<Layout title="Preços — Nó Digital" description="Planos para o vosso website de casamento. Peçam um orçamento personalizado.">
+<Layout title="Planos — Nó Digital" description="Descubra o plano ideal para o vosso website de casamento. Peçam um orçamento personalizado e sem compromisso.">
   <!-- Hero -->
   <section class="section-padding pt-32 text-center">
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-3xl mx-auto animate-on-scroll">
       <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Planos</p>
       <h1 class="font-serif text-4xl sm:text-5xl font-bold text-olive-900 mb-4">
         Encontrem o plano ideal
       </h1>
       <p class="text-olive-600 text-lg leading-relaxed">
-        Cada casamento é único. Peçam um orçamento personalizado e recebem uma proposta à medida em menos de 24 horas.
+        Cada casamento é único — por isso cada orçamento é personalizado. 
+        Escolham o plano que faz sentido e peçam uma proposta à medida, sem compromisso.
       </p>
     </div>
   </section>
 
   <!-- Pricing Cards -->
   <section class="section-padding pt-8">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 items-start stagger-children">
       {plans.map((plan) => (
-        <div class={`rounded-2xl p-8 border ${plan.highlighted ? 'bg-olive-900 border-gold-400 text-white shadow-2xl scale-105' : 'bg-white border-beige-200 shadow-sm'} transition-all`}>
+        <div class={`rounded-2xl p-8 border relative ${
+          plan.highlighted
+            ? 'bg-olive-900 border-gold-400 text-white shadow-2xl md:scale-105'
+            : 'bg-white border-beige-200 shadow-sm hover:shadow-md'
+        } transition-all`}>
           {plan.highlighted && (
-            <span class="inline-block text-xs font-semibold uppercase tracking-wider bg-gold-400 text-olive-900 px-3 py-1 rounded-full mb-4">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 inline-block text-xs font-semibold uppercase tracking-wider bg-gold-400 text-olive-900 px-4 py-1.5 rounded-full shadow-lg">
               Mais Popular
             </span>
           )}
           <h3 class={`font-serif text-2xl font-bold mb-1 ${plan.highlighted ? 'text-white' : 'text-olive-900'}`}>
             {plan.name}
           </h3>
-          <p class={`text-sm mb-6 ${plan.highlighted ? 'text-beige-300' : 'text-olive-500'}`}>
+          <p class={`text-sm mb-4 ${plan.highlighted ? 'text-beige-300' : 'text-olive-500'}`}>
             {plan.description}
           </p>
           <div class="mb-6">
@@ -114,9 +134,9 @@ const faqs = [
 
           <a
             href={`${base}/contacto`}
-            class={`block text-center py-3 rounded-full font-semibold transition-all ${
+            class={`block text-center py-3.5 rounded-full font-semibold transition-all ${
               plan.highlighted
-                ? 'bg-gold-400 hover:bg-gold-500 text-olive-900'
+                ? 'bg-gold-400 hover:bg-gold-500 text-olive-900 shadow-lg'
                 : 'border-2 border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-white'
             }`}
           >
@@ -127,23 +147,45 @@ const faqs = [
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- What's always included -->
   <section class="section-padding bg-white">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="font-serif text-3xl font-bold text-olive-900 text-center mb-12">
-        Perguntas Frequentes
-      </h2>
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-olive-900 mb-2">
+          Sempre incluído em todos os planos
+        </h2>
+        <p class="text-olive-500 text-sm">Sem custos escondidos, sem surpresas.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
+        {included.map((item) => (
+          <div class="flex items-center gap-3 bg-beige-50 rounded-xl px-5 py-4 border border-beige-200">
+            <span class="text-xl flex-shrink-0">{item.icon}</span>
+            <span class="text-sm text-olive-700 font-medium">{item.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-      <div class="space-y-4">
-        {faqs.map((faq, i) => (
-          <div class="border border-beige-200 rounded-xl overflow-hidden">
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="font-serif text-3xl font-bold text-olive-900">
+          Perguntas Frequentes
+        </h2>
+      </div>
+
+      <div class="space-y-3">
+        {faqs.map((faq) => (
+          <div class="border border-beige-200 rounded-xl overflow-hidden bg-white">
             <button
               class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left hover:bg-beige-50 transition-colors"
               aria-expanded="false"
               type="button"
             >
               <span class="font-medium text-olive-800 pr-4">{faq.q}</span>
-              <span class="text-gold-500 text-xl flex-shrink-0 faq-icon transition-transform">+</span>
+              <span class="text-gold-500 text-2xl flex-shrink-0 faq-icon transition-transform duration-300" aria-hidden="true">+</span>
             </button>
             <div class="faq-content hidden px-6 pb-5">
               <p class="text-olive-600 leading-relaxed">{faq.a}</p>
@@ -156,9 +198,11 @@ const faqs = [
 
   <!-- CTA -->
   <section class="section-padding bg-gradient-to-br from-olive-900 to-olive-950 text-center">
-    <div class="max-w-2xl mx-auto">
+    <div class="max-w-2xl mx-auto animate-on-scroll">
       <h2 class="font-serif text-3xl font-bold text-white mb-4">Vamos começar?</h2>
-      <p class="text-beige-300 mb-8">Enviem-nos uma mensagem e respondemos em menos de 24 horas.</p>
+      <p class="text-beige-300 mb-8">
+        Enviem-nos uma mensagem e respondemos em menos de 24 horas com uma proposta à medida.
+      </p>
       <a href={`${base}/contacto`} class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
         Pedir Orçamento Grátis →
       </a>
@@ -173,7 +217,7 @@ const faqs = [
       const icon = btn.querySelector('.faq-icon') as HTMLElement;
       const isOpen = btn.getAttribute('aria-expanded') === 'true';
 
-      // Close all
+      // Close all others
       document.querySelectorAll('.faq-btn').forEach((other) => {
         if (other !== btn) {
           other.setAttribute('aria-expanded', 'false');
@@ -190,9 +234,8 @@ const faqs = [
       } else {
         btn.setAttribute('aria-expanded', 'true');
         content?.classList.remove('hidden');
-        if (icon) { icon.textContent = '×'; icon.style.transform = 'rotate(45deg)'; }
+        if (icon) { icon.textContent = '−'; icon.style.transform = 'rotate(180deg)'; }
       }
     });
   });
 </script>
-

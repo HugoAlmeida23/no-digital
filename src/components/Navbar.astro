@@ -1,21 +1,29 @@
 ---
 const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: `${base}`, label: 'Início' },
   { href: `${base}/funcionalidades`, label: 'Funcionalidades' },
-  { href: `${base}/precos`, label: 'Preços' },
+  { href: `${base}/precos`, label: 'Planos' },
   { href: `${base}/sobre`, label: 'Sobre' },
   { href: `${base}/contacto`, label: 'Contacto' },
 ];
+
+function isActive(href: string): boolean {
+  if (href === base || href === base + '/') {
+    return currentPath === base || currentPath === base + '/' || currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+}
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-beige-50/90 backdrop-blur-md border-b border-beige-200/50">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-beige-50/90 backdrop-blur-md border-b border-beige-200/50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Navegação principal">
     <!-- Logo -->
-    <a href={base} class="flex items-center gap-2">
-      <span class="font-script text-2xl text-gold-500">Nó</span>
-      <span class="font-serif text-lg font-semibold text-olive-800">Digital</span>
+    <a href={base} class="flex items-center gap-2 group" aria-label="Nó Digital — Página inicial">
+      <span class="font-script text-2xl text-gold-500 group-hover:text-gold-600 transition-colors">Nó</span>
+      <span class="font-serif text-lg font-semibold text-olive-800 group-hover:text-olive-900 transition-colors">Digital</span>
     </a>
 
     <!-- Desktop Nav -->
@@ -24,9 +32,17 @@ const navLinks = [
         <li>
           <a
             href={link.href}
-            class="text-sm font-medium text-olive-700 hover:text-gold-500 transition-colors"
+            class={`text-sm font-medium transition-colors relative ${
+              isActive(link.href)
+                ? 'text-gold-500'
+                : 'text-olive-700 hover:text-gold-500'
+            }`}
+            aria-current={isActive(link.href) ? 'page' : undefined}
           >
             {link.label}
+            {isActive(link.href) && (
+              <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold-500 rounded-full" />
+            )}
           </a>
         </li>
       ))}
@@ -40,28 +56,39 @@ const navLinks = [
     <!-- Mobile menu button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden p-2 text-olive-700"
-      aria-label="Abrir menu"
+      class="md:hidden p-2 text-olive-700 hover:text-gold-500 transition-colors"
+      aria-label="Abrir menu de navegação"
+      aria-expanded="false"
       type="button"
     >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </button>
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden hidden bg-beige-50 border-b border-beige-200 px-4 pb-4">
-    <ul class="space-y-3">
+  <div id="mobile-menu" class="md:hidden hidden bg-beige-50/95 backdrop-blur-md border-b border-beige-200 px-4 pb-4" aria-label="Menu mobile">
+    <ul class="space-y-1">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href} class="block py-2 text-olive-700 hover:text-gold-500 font-medium">
+          <a
+            href={link.href}
+            class={`block py-3 px-4 rounded-xl font-medium transition-colors ${
+              isActive(link.href)
+                ? 'text-gold-500 bg-gold-50'
+                : 'text-olive-700 hover:text-gold-500 hover:bg-beige-100'
+            }`}
+          >
             {link.label}
           </a>
         </li>
       ))}
-      <li>
-        <a href={`${base}/contacto`} class="btn-primary w-full text-center text-sm mt-2">
+      <li class="pt-2">
+        <a href={`${base}/contacto`} class="btn-primary w-full text-center text-sm">
           Pedir Orçamento
         </a>
       </li>
@@ -72,7 +99,30 @@ const navLinks = [
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  const navbar = document.getElementById('navbar');
+
+  // Mobile menu toggle
   btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('hidden');
     menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
+
+  // Navbar shrink on scroll
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      navbar?.classList.add('shadow-md');
+      navbar?.classList.remove('border-b', 'border-beige-200/50');
+    } else {
+      navbar?.classList.remove('shadow-md');
+      navbar?.classList.add('border-b', 'border-beige-200/50');
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
 </script>
