@@ -25,12 +25,6 @@ const steps = [
   { number: '03', title: 'Entrega', desc: 'Site online, testado e pronto. Suporte incluído até ao dia do casamento.' },
 ];
 
-const testimonials = [
-  { name: 'Ana & Pedro', location: 'Porto', text: 'Os nossos convidados ficaram maravilhados com o convite animado. Recebemos elogios durante meses!' },
-  { name: 'Mariana & Tiago', location: 'Lisboa', text: 'A galeria ao vivo foi o ponto alto. Temos centenas de fotos espontâneas que nunca teríamos de outra forma.' },
-  { name: 'Catarina & João', location: 'Algarve', text: 'O mapa de mesas interativo poupou-nos imenso stress no dia. Ninguém se perdeu!' },
-];
-
 const benefits = [
   { icon: '🚀', title: 'Ultrarrápido', desc: 'Site estático com carregamento instantâneo em qualquer dispositivo.' },
   { icon: '📱', title: 'Mobile-First', desc: '100% responsivo — perfeito no telemóvel, tablet e desktop.' },
@@ -205,33 +199,6 @@ const benefits = [
             <span class="text-3xl block mb-3">{b.icon}</span>
             <h3 class="font-semibold text-olive-800 mb-1">{b.title}</h3>
             <p class="text-olive-600 text-xs leading-relaxed">{b.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="section-padding bg-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 animate-on-scroll">
-        <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Testemunhos</p>
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900">
-          O que dizem os nossos casais
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 stagger-children">
-        {testimonials.map((t) => (
-          <div class="bg-beige-50 rounded-2xl p-8 border border-beige-200 hover:shadow-md transition-shadow">
-            <div class="flex gap-1 text-gold-400 mb-4" aria-label="5 estrelas">
-              {'★★★★★'.split('').map(() => <span>★</span>)}
-            </div>
-            <p class="text-olive-700 leading-relaxed mb-6 italic">"{t.text}"</p>
-            <div>
-              <p class="font-semibold text-olive-800">{t.name}</p>
-              <p class="text-olive-500 text-sm">{t.location}</p>
-            </div>
           </div>
         ))}
       </div>
