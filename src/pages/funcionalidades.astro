@@ -7,6 +7,7 @@ const featureGroups = [
   {
     category: 'Experiência de Entrada',
     subtitle: 'A primeira impressão que marca',
+    icon: '🚪',
     features: [
       {
         icon: '✉️',
@@ -31,6 +32,7 @@ const featureGroups = [
   {
     category: 'Secções do Website',
     subtitle: 'Modulares — escolhem o que faz sentido para vocês',
+    icon: '🧩',
     features: [
       {
         icon: '🖼️',
@@ -97,6 +99,7 @@ const featureGroups = [
   {
     category: 'Páginas Extra',
     subtitle: 'Funcionalidades que surpreendem no dia',
+    icon: '🌟',
     features: [
       {
         icon: '📸',
@@ -121,6 +124,7 @@ const featureGroups = [
   {
     category: 'Gestão & Administração',
     subtitle: 'Painel privado para os noivos',
+    icon: '🎛️',
     features: [
       {
         icon: '🎛️',
@@ -154,37 +158,76 @@ const featureGroups = [
 
 <Layout title="Funcionalidades — Nó Digital" description="Todas as funcionalidades incluídas no vosso website de casamento premium — da experiência cinematográfica ao painel de administração.">
   <!-- Hero -->
-  <section class="section-padding pt-32 text-center">
-    <div class="max-w-3xl mx-auto animate-on-scroll">
-      <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Catálogo Completo</p>
+  <section class="section-padding pt-32 text-center relative overflow-hidden">
+    <!-- Background flowers -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-[15%] right-[5%] text-4xl opacity-10 float-diagonal">🌸</div>
+      <div class="absolute bottom-[20%] left-[5%] text-3xl opacity-10 float">🌺</div>
+      <div class="absolute top-[40%] left-[10%] text-2xl opacity-8 float-slow">🌷</div>
+      <svg class="absolute top-20 right-10 w-40 h-40 opacity-[0.04] spin-reverse" viewBox="0 0 300 300" fill="#a9b06f">
+        <path d="M150 20 C200 50, 270 70, 280 140 C290 210, 250 270, 200 280 C150 290, 80 270, 50 220 C20 170, 40 90, 90 50 C120 30, 130 20, 150 20Z"/>
+      </svg>
+    </div>
+
+    <div class="max-w-3xl mx-auto animate-on-scroll relative">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="h-px w-16 bg-gradient-to-r from-transparent to-gold-300"></div>
+        <span class="text-2xl bloom">🌺</span>
+        <div class="h-px w-16 bg-gradient-to-l from-transparent to-gold-300"></div>
+      </div>
+      <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-3">✨ Catálogo Completo ✨</p>
       <h1 class="font-serif text-4xl sm:text-5xl font-bold text-olive-900 mb-4">
-        Tudo o que o vosso website pode ter
+        Tudo o que o vosso website <span class="text-gradient-gold">pode ter</span>
       </h1>
       <p class="text-olive-600 text-lg leading-relaxed">
-        Cada funcionalidade é modular, escolhem apenas o que faz sentido para vocês. 
-        Nada é obrigatório, tudo é personalizável.
+        Cada funcionalidade é modular — escolhem apenas o que faz sentido para vocês. 
+        Nada é obrigatório, tudo é personalizável. 🎨
       </p>
     </div>
   </section>
 
   <!-- Feature Groups -->
   {featureGroups.map((group, groupIdx) => (
-    <section class={`section-padding ${groupIdx % 2 === 0 ? '' : 'bg-white'}`}>
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-12 animate-on-scroll">
+    <section class={`section-padding relative overflow-hidden ${groupIdx % 2 === 0 ? '' : 'bg-white'}`}>
+      <!-- Section background flowers -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <svg class={`absolute ${groupIdx % 2 === 0 ? 'top-10 right-5' : 'bottom-10 left-5'} w-24 h-24 opacity-[0.04] sway`} viewBox="0 0 100 100" fill="#d99b1a">
+          <circle cx="50" cy="25" r="15"/><circle cx="70" cy="45" r="15"/><circle cx="60" cy="70" r="15"/><circle cx="35" cy="70" r="15"/><circle cx="30" cy="45" r="15"/><circle cx="50" cy="48" r="12"/>
+        </svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto relative">
+        <div class="text-center mb-14 animate-on-scroll">
+          <span class="text-4xl block mb-3 bloom">{group.icon}</span>
           <h2 class="font-serif text-2xl sm:text-3xl font-bold text-olive-900 mb-2">
             {group.category}
           </h2>
           <p class="text-olive-500 text-sm">{group.subtitle}</p>
+          <div class="flex items-center justify-center gap-3 mt-4">
+            <div class="h-px w-12 bg-gradient-to-r from-transparent to-gold-300"></div>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="#d99b1a" class="opacity-40">
+              <circle cx="10" cy="5" r="2.5"/><circle cx="13" cy="8" r="2.5"/><circle cx="12" cy="12" r="2.5"/><circle cx="8" cy="12" r="2.5"/><circle cx="7" cy="8" r="2.5"/><circle cx="10" cy="8" r="2" fill="#a05614"/>
+            </svg>
+            <div class="h-px w-12 bg-gradient-to-l from-transparent to-gold-300"></div>
+          </div>
         </div>
 
         <div class={`grid ${group.features.length <= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-8 stagger-children`}>
           {group.features.map((f) => (
-            <div class="group bg-white rounded-2xl p-8 shadow-sm border border-beige-200 hover:shadow-lg hover:border-gold-200 transition-all duration-300">
-              <span class="text-4xl block mb-4 group-hover:scale-110 transition-transform duration-300">{f.icon}</span>
+            <div class="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-sm border border-beige-200/80 overflow-hidden flower-consume">
+              <!-- Flower borders that consume the edges on hover -->
+              <div class="flower-border-top">🌸🌺🌹🌷💐🌻🪷🌼🌸🌺🌹</div>
+              <div class="flower-border-bottom">🌼🪷🌻💐🌷🌹🌺🌸🌼🪷🌻</div>
+              <div class="flower-border-left">🌸🌺🌹🌷💐🌻🪷</div>
+              <div class="flower-border-right">🌼🪷🌻💐🌷🌹🌺</div>
+              
+              <!-- Top gold line (static) -->
+              <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-gold-300 to-transparent opacity-40"></div>
+              
+              <span class="text-4xl block mb-4 drop-shadow-sm">{f.icon}</span>
               <h3 class="font-serif text-xl font-semibold text-olive-800 mb-3">{f.title}</h3>
-              <p class="text-olive-600 leading-relaxed mb-4">{f.desc}</p>
-              <ul class="space-y-1.5">
+              <p class="text-olive-600 leading-relaxed mb-4 text-sm">{f.desc}</p>
+              <ul class="space-y-2">
                 {f.highlights.map((h) => (
                   <li class="text-sm text-olive-500 flex items-center gap-2">
                     <span class="text-gold-500 flex-shrink-0">✓</span> {h}
@@ -199,36 +242,56 @@ const featureGroups = [
   ))}
 
   <!-- Customization note -->
-  <section class="section-padding bg-white">
-    <div class="max-w-3xl mx-auto text-center animate-on-scroll">
-      <span class="text-5xl block mb-6">🎨</span>
+  <section class="section-padding bg-white relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-[10%] left-[8%] text-3xl opacity-10 float">🎨</div>
+      <div class="absolute bottom-[15%] right-[8%] text-3xl opacity-10 float-slow">✨</div>
+    </div>
+
+    <div class="max-w-3xl mx-auto text-center animate-on-scroll-scale">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gold-50 border-2 border-gold-200 mb-6 bloom">
+        <span class="text-4xl">🎨</span>
+      </div>
       <h2 class="font-serif text-2xl sm:text-3xl font-bold text-olive-900 mb-4">
-        Tudo é personalizável
+        Tudo é <span class="text-gradient-gold">personalizável</span>
       </h2>
       <p class="text-olive-600 leading-relaxed mb-6">
         Nomes, data, locais, fotos, cores, fontes, textos, quais secções incluir, paleta de cores, 
         tema claro/escuro, pergunta do quiz, métodos de pagamento, ementa, timeline, FAQs, 
-        layout das mesas. Literalmente tudo pode ser adaptado ao vosso gosto.
+        layout das mesas. Literalmente tudo pode ser adaptado ao vosso gosto. 💐
       </p>
-      <p class="text-olive-500 text-sm">
-        Têm uma ideia que não está na lista? Criamos funcionalidades à medida.
+      <p class="text-olive-500 text-sm bg-beige-50 inline-block px-6 py-3 rounded-full border border-beige-200">
+        💡 Têm uma ideia que não está na lista? Criamos funcionalidades à medida.
       </p>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section-padding bg-gradient-to-br from-olive-900 to-olive-950 text-center">
-    <div class="max-w-2xl mx-auto animate-on-scroll">
-      <h2 class="font-serif text-3xl font-bold text-white mb-4">Gostaram do que viram?</h2>
-      <p class="text-beige-300 mb-8">
-        Agendem uma reunião gratuita e sem compromisso, mostramos a demo completa com tudo a funcionar ao vivo.
+  <section class="section-padding bg-gradient-to-br from-olive-900 to-olive-950 text-center relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-[15%] left-[10%] text-3xl opacity-5 float-diagonal">🌸</div>
+      <div class="absolute bottom-[20%] right-[10%] text-3xl opacity-5 float">🌺</div>
+      <svg class="absolute top-10 right-10 w-32 h-32 opacity-[0.04] sway" viewBox="0 0 100 100" fill="#d99b1a">
+        <circle cx="50" cy="25" r="15"/><circle cx="70" cy="45" r="15"/><circle cx="60" cy="70" r="15"/><circle cx="35" cy="70" r="15"/><circle cx="30" cy="45" r="15"/><circle cx="50" cy="48" r="12"/>
+      </svg>
+    </div>
+
+    <div class="max-w-2xl mx-auto animate-on-scroll relative">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-px w-12 bg-gradient-to-r from-transparent to-gold-400/40"></div>
+        <span class="text-2xl heartbeat">💍</span>
+        <div class="h-px w-12 bg-gradient-to-l from-transparent to-gold-400/40"></div>
+      </div>
+      <h2 class="font-serif text-3xl font-bold text-white mb-4">Gostaram do que viram? 🌹</h2>
+      <p class="text-beige-300 mb-8 leading-relaxed">
+        Agendem uma reunião gratuita e sem compromisso — mostramos a demo completa com tudo a funcionar ao vivo.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/contacto" class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
-          Agendar Demo Gratuita →
+        <a href="/contacto" class="btn-floral">
+          🌸 Agendar Demo Gratuita
         </a>
-        <a href="/precos" class="text-beige-300 hover:text-white font-medium transition-colors text-sm underline underline-offset-4">
-          Ver planos
+        <a href="/precos" class="text-beige-300 font-medium text-sm underline underline-offset-4 decoration-gold-400/30">
+          Ver planos →
         </a>
       </div>
     </div>

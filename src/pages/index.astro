@@ -1,15 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-
-
 const features = [
-  { icon: '✉️', title: 'Convite Animado', desc: 'Envelope interativo com selo de cera e animação cinematográfica que surpreende os convidados.' },
-  { icon: '🔐', title: 'Quiz Pessoal', desc: 'Pergunta personalizada que torna o acesso exclusivo, íntimo e divertido.' },
-  { icon: '📸', title: 'Galeria ao Vivo', desc: 'Fotos dos convidados em tempo real durante o evento, partilhadas com todos.' },
-  { icon: '🪑', title: 'Mapa de Mesas', desc: 'Planta interativa com zoom animado — cada convidado encontra o lugar em segundos.' },
-  { icon: '📋', title: 'RSVP Inteligente', desc: 'Confirmação com acompanhantes, alergias e mensagens — sem Excel.' },
-  { icon: '⏱️', title: 'Countdown', desc: 'Contagem decrescente elegante com dias, horas, minutos e segundos.' },
+  { icon: '✉️', title: 'Convite Animado', desc: 'Envelope interativo com selo de cera e animação cinematográfica.', emoji: '💌' },
+  { icon: '📸', title: 'Galeria ao Vivo', desc: 'Fotos dos convidados em tempo real durante o evento.', emoji: '🌺' },
+  { icon: '🪑', title: 'Mapa de Mesas', desc: 'Planta interativa — cada convidado encontra o lugar em segundos.', emoji: '🌷' },
+  { icon: '📋', title: 'RSVP Inteligente', desc: 'Confirmação com acompanhantes e alergias.', emoji: '🌹' },
+  { icon: '⏱️', title: 'Countdown', desc: 'Contagem decrescente elegante até ao grande dia.', emoji: '🌻' },
+  { icon: '🔐', title: 'Quiz Pessoal', desc: 'Acesso exclusivo e divertido com pergunta personalizada.', emoji: '🌸' },
 ];
 
 const stats = [
@@ -19,200 +17,564 @@ const stats = [
   { value: '0€', label: 'Custos de Hosting' },
 ];
 
-const steps = [
-  { number: '01', title: 'Reunião', desc: 'Conversa gratuita onde mostramos a demo completa já preparada, com todas as funcionalidades a funcionar. Sem compromisso.' },
-  { number: '02', title: 'Personalização', desc: 'Escolhem as secções, enviam fotos e textos. Montamos tudo à vossa medida.' },
-  { number: '03', title: 'Entrega', desc: 'Site online, testado e pronto. Suporte incluído até ao dia do casamento.' },
+const testimonials = [
+  { name: 'Ana & Pedro', location: 'Porto', text: 'Os convidados ficaram maravilhados com o convite animado. Elogios durante meses!', flower: '🌹' },
+  { name: 'Mariana & Tiago', location: 'Lisboa', text: 'A galeria ao vivo foi o ponto alto. Centenas de fotos espontâneas!', flower: '🌺' },
+  { name: 'Catarina & João', location: 'Algarve', text: 'O mapa de mesas poupou-nos imenso stress. Ninguém se perdeu!', flower: '🌷' },
 ];
 
-const benefits = [
-  { icon: '🚀', title: 'Ultrarrápido', desc: 'Site com carregamento instantâneo em qualquer dispositivo.' },
-  { icon: '📱', title: 'Mobile-First', desc: '100% responsivo e desenhado para telemóvel, tablet e desktop.' },
-  { icon: '♿', title: 'Acessível', desc: 'Navegável por teclado, compatível com leitores de ecrã, suporte para daltónicos, etc.' },
-  { icon: '🔒', title: 'Seguro', desc: 'Dados dos convidados encriptados.' },
-];
+const marqueeItems = ['💐 Convites Animados', '📸 Galeria ao Vivo', '🪑 Mapa de Mesas', '📋 RSVP', '⏱️ Countdown', '🎨 100% Personalizável', '💍 Feito com Amor', '🌸 Premium', '🥂 Sem Compromisso', '🇵🇹 Feito em Portugal'];
 ---
 
 <Layout>
-  <!-- Hero -->
-  <section class="relative min-h-screen flex items-center justify-center section-padding pt-32 overflow-hidden">
-    <!-- Background decoration -->
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-gold-200/30 rounded-full blur-3xl float"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-olive-200/20 rounded-full blur-3xl float" style="animation-delay: -3s;"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-beige-200/20 rounded-full blur-3xl"></div>
+  <!-- ===== SPLASH SCREEN ===== -->
+  <div id="splash" class="splash-screen">
+    <div class="splash-heart">💍</div>
+    <div class="splash-text">Nó Digital</div>
+    <p class="text-olive-500 text-sm mt-4 animate-pulse">A preparar algo especial...</p>
+  </div>
+
+  <!-- ===== FALLING PETALS CONTAINER ===== -->
+  <div id="petals-container" class="fixed inset-0 pointer-events-none z-[99]" aria-hidden="true"></div>
+
+  <!-- ===== WELCOME POPUP ===== -->
+  <div id="welcome-popup" class="popup-overlay" role="dialog" aria-labelledby="popup-title" aria-modal="true">
+    <div class="popup-content">
+      <button class="popup-close" id="popup-close-btn" aria-label="Fechar">&times;</button>
+      <div class="text-6xl mb-4 heartbeat">💐</div>
+      <h2 id="popup-title" class="font-serif text-2xl font-bold text-olive-900 mb-3">Bem-vindos ao Nó Digital!</h2>
+      <p class="text-olive-600 mb-6 leading-relaxed">
+        Criamos websites de casamento que encantam. Agendem uma <strong>demo gratuita</strong> e vejam tudo a funcionar ao vivo!
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/contacto" class="btn-floral text-sm px-6 py-3">🌹 Ver Demo Grátis</a>
+        <button id="popup-dismiss" class="text-olive-500 hover:text-gold-500 text-sm font-medium transition-colors cursor-pointer">
+          Explorar primeiro →
+        </button>
+      </div>
+      <!-- Decorative flowers around popup -->
+      <svg class="absolute -top-6 -left-6 w-14 h-14 text-gold-300 opacity-60 bloom" viewBox="0 0 30 30" fill="currentColor">
+        <circle cx="15" cy="8" r="4"/><circle cx="21" cy="13" r="4"/><circle cx="19" cy="20" r="4"/><circle cx="11" cy="20" r="4"/><circle cx="9" cy="13" r="4"/><circle cx="15" cy="14" r="3" fill="#a05614"/>
+      </svg>
+      <svg class="absolute -bottom-5 -right-5 w-12 h-12 text-olive-300 opacity-50 bloom" style="animation-delay: -1.5s;" viewBox="0 0 30 30" fill="currentColor">
+        <circle cx="15" cy="8" r="4"/><circle cx="21" cy="13" r="4"/><circle cx="19" cy="20" r="4"/><circle cx="11" cy="20" r="4"/><circle cx="9" cy="13" r="4"/><circle cx="15" cy="14" r="3" fill="#555c31"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ===== FLOATING WHATSAPP FAB ===== -->
+  <a href="https://wa.me/351911820236" target="_blank" rel="noopener noreferrer" class="fab-whatsapp !w-12 !h-12 sm:!w-16 sm:!h-16" aria-label="Contactar por WhatsApp">
+    <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 pb-16 sm:pb-0">
+    
+    <!-- MASSIVE ANIMATED FLORAL BACKGROUND -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      
+      <!-- Giant rose top-left -->
+      <svg class="absolute -top-10 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] float-slow opacity-[0.1]" viewBox="0 0 400 400" fill="none">
+        <path d="M200 50 C250 80, 320 100, 340 160 C360 220, 330 290, 280 320 C230 350, 160 350, 120 320 C80 290, 50 230, 60 170 C70 110, 130 60, 200 50Z" stroke="#8d9650" stroke-width="2" fill="#8d9650" fill-opacity="0.3"/>
+        <path d="M200 80 C240 100, 290 120, 300 160 C310 200, 290 250, 260 270 C230 290, 180 290, 150 270 C120 250, 100 210, 110 170 C120 130, 160 90, 200 80Z" stroke="#8d9650" stroke-width="1.5" fill="#8d9650" fill-opacity="0.2"/>
+        <path d="M200 110 C230 125, 265 140, 270 165 C275 190, 260 220, 240 235 C220 250, 185 250, 165 235 C145 220, 135 195, 140 170 C145 145, 170 120, 200 110Z" fill="#a9b06f" fill-opacity="0.3"/>
+        <circle cx="200" cy="180" r="30" fill="#d99b1a" fill-opacity="0.2"/>
+        <circle cx="200" cy="180" r="15" fill="#d99b1a" fill-opacity="0.3"/>
+      </svg>
+
+      <!-- Giant rose bottom-right -->
+      <svg class="absolute -bottom-20 -right-20 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] float opacity-[0.08]" viewBox="0 0 400 400" fill="none">
+        <path d="M200 40 C260 70, 340 90, 360 160 C380 230, 340 310, 280 340 C220 370, 150 360, 100 320 C50 280, 30 210, 50 150 C70 90, 140 50, 200 40Z" stroke="#a9b06f" stroke-width="2" fill="#a9b06f" fill-opacity="0.4"/>
+        <path d="M200 90 C240 110, 300 130, 310 170 C320 210, 300 260, 270 280 C240 300, 180 300, 150 280 C120 260, 100 220, 110 180 C120 140, 160 105, 200 90Z" fill="#8d9650" fill-opacity="0.3"/>
+        <circle cx="200" cy="190" r="40" fill="#d99b1a" fill-opacity="0.15"/>
+        <circle cx="200" cy="190" r="20" fill="#e8b832" fill-opacity="0.2"/>
+      </svg>
+
+      <!-- Floating flower clusters (hidden on mobile) -->
+      <div class="hidden sm:block absolute top-[10%] right-[5%] text-4xl float-diagonal opacity-30" style="animation-delay: -2s;">🌸</div>
+      <div class="hidden sm:block absolute top-[20%] left-[5%] text-3xl float opacity-25" style="animation-delay: -4s;">🌺</div>
+      <div class="hidden sm:block absolute top-[40%] right-[8%] text-2xl float-slow opacity-20" style="animation-delay: -1s;">🌷</div>
+      <div class="hidden sm:block absolute bottom-[30%] left-[3%] text-3xl float-diagonal opacity-25" style="animation-delay: -3s;">🌹</div>
+      <div class="hidden sm:block absolute top-[60%] right-[12%] text-2xl float opacity-20" style="animation-delay: -5s;">💐</div>
+      <div class="hidden sm:block absolute top-[15%] left-[40%] text-xl float-slow opacity-15" style="animation-delay: -2.5s;">🌻</div>
+      <div class="hidden sm:block absolute bottom-[20%] right-[30%] text-2xl float-diagonal opacity-20" style="animation-delay: -3.5s;">🪻</div>
+      <div class="hidden sm:block absolute top-[70%] left-[15%] text-xl float opacity-15" style="animation-delay: -4.5s;">🌼</div>
+
+      <!-- Scattered petals SVG (hidden on mobile) -->
+      <svg class="hidden sm:block absolute top-[15%] right-[10%] w-16 h-16 float opacity-20 sway" style="animation-delay: -2s;" viewBox="0 0 50 50" fill="#d99b1a">
+        <ellipse cx="25" cy="20" rx="8" ry="15" transform="rotate(-20 25 25)"/>
+      </svg>
+      <svg class="hidden sm:block absolute top-[60%] left-[8%] w-12 h-12 float opacity-15 sway" style="animation-delay: -4s;" viewBox="0 0 50 50" fill="#a9b06f">
+        <ellipse cx="25" cy="20" rx="6" ry="12" transform="rotate(15 25 25)"/>
+      </svg>
+      <svg class="hidden sm:block absolute top-[30%] left-[15%] w-10 h-10 float-slow opacity-20" style="animation-delay: -1s;" viewBox="0 0 50 50" fill="#c8ae77">
+        <ellipse cx="25" cy="20" rx="5" ry="10" transform="rotate(-30 25 25)"/>
+      </svg>
+      <svg class="hidden sm:block absolute bottom-[25%] right-[20%] w-14 h-14 float-slow opacity-15" style="animation-delay: -5s;" viewBox="0 0 50 50" fill="#d99b1a">
+        <ellipse cx="25" cy="20" rx="7" ry="13" transform="rotate(25 25 25)"/>
+      </svg>
+
+      <!-- Champagne bubbles (hidden on mobile) -->
+      <div class="hidden sm:block absolute top-[20%] right-[25%] w-4 h-4 rounded-full bg-gold-300/25 float sparkle" style="animation-delay: -1s;"></div>
+      <div class="hidden sm:block absolute top-[35%] right-[15%] w-3 h-3 rounded-full bg-gold-400/20 float sparkle" style="animation-delay: -3s;"></div>
+      <div class="hidden sm:block absolute top-[50%] left-[20%] w-5 h-5 rounded-full bg-gold-200/20 float-slow sparkle" style="animation-delay: -2s;"></div>
+      <div class="hidden sm:block absolute top-[70%] right-[35%] w-3 h-3 rounded-full bg-gold-300/25 float sparkle" style="animation-delay: -4s;"></div>
+      <div class="hidden sm:block absolute bottom-[30%] left-[30%] w-4 h-4 rounded-full bg-gold-200/15 float-slow sparkle"></div>
+      <div class="hidden sm:block absolute top-[25%] left-[60%] w-2 h-2 rounded-full bg-gold-400/30 float sparkle" style="animation-delay: -1.5s;"></div>
+      <div class="hidden sm:block absolute top-[80%] left-[50%] w-3 h-3 rounded-full bg-gold-300/20 float sparkle" style="animation-delay: -2.5s;"></div>
+
+      <!-- Rings interlinked (hidden on mobile) -->
+      <svg class="hidden sm:block absolute top-[12%] left-[50%] -translate-x-1/2 w-28 h-28 opacity-[0.1] spin-slow" viewBox="0 0 100 100" fill="none" stroke="#d99b1a" stroke-width="3">
+        <circle cx="38" cy="50" r="20"/>
+        <circle cx="62" cy="50" r="20"/>
+      </svg>
+
+      <!-- More decorative elements (hidden on mobile) -->
+      <svg class="hidden sm:block absolute bottom-[40%] left-[45%] w-6 h-6 opacity-20 sparkle" style="animation-delay: -1s;" viewBox="0 0 24 24" fill="#e8b832">
+        <path d="M12 2L14 8L20 8L15 12L17 18L12 14L7 18L9 12L4 8L10 8Z"/>
+      </svg>
+      <svg class="hidden sm:block absolute top-[55%] right-[40%] w-5 h-5 opacity-15 sparkle" style="animation-delay: -3s;" viewBox="0 0 24 24" fill="#d99b1a">
+        <path d="M12 2L14 8L20 8L15 12L17 18L12 14L7 18L9 12L4 8L10 8Z"/>
+      </svg>
+
+      <!-- Soft glow -->
+      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] sm:w-[900px] h-[400px] sm:h-[900px] bg-gold-100/25 rounded-full blur-[100px] sm:blur-[150px]"></div>
+      <div class="hidden sm:block absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-olive-100/15 rounded-full blur-[100px]"></div>
     </div>
 
-    <div class="relative max-w-5xl mx-auto text-center">
-      <p class="text-gold-500 font-medium tracking-wide uppercase text-sm mb-4 animate-on-scroll">Websites de Casamento Premium</p>
-      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-olive-900 leading-tight mb-6 animate-on-scroll">
-        O vosso casamento merece<br />
-        <span class="text-gradient">um website inesquecível</span>
-      </h1>
-      <p class="text-lg sm:text-xl text-olive-600 max-w-2xl mx-auto mb-10 leading-relaxed animate-on-scroll">
-        Experiências digitais elegantes e interativas que encantam os vossos convidados do convite animado à galeria de fotos ao vivo.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-on-scroll">
-        <a href="/contacto" class="btn-primary text-lg px-10 py-4 pulse-glow">
-          Pedir Orçamento Grátis
-        </a>
-        <a href="/funcionalidades" class="btn-outline text-lg px-10 py-4">
-          Ver Funcionalidades
-        </a>
+    <!-- CONTENT -->
+    <div class="relative max-w-5xl mx-auto text-center px-4">
+      <!-- Decorative rings above title (hidden on mobile) -->
+      <div class="hidden sm:flex justify-center mb-6 animate-on-scroll">
+        <div class="relative">
+          <svg width="70" height="42" viewBox="0 0 60 36" fill="none" class="opacity-50 float-bounce">
+            <circle cx="22" cy="18" r="14" stroke="#d99b1a" stroke-width="1.5"/>
+            <circle cx="38" cy="18" r="14" stroke="#d99b1a" stroke-width="1.5"/>
+          </svg>
+          <div class="absolute -top-2 -right-4 text-sm sparkle">✨</div>
+          <div class="absolute -bottom-1 -left-3 text-sm sparkle" style="animation-delay: -1s;">✨</div>
+        </div>
       </div>
 
-      <!-- Trust indicators -->
-      <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-olive-500 animate-on-scroll">
-        <span class="flex items-center gap-1.5">✓ Resposta em 24h</span>
-        <span class="flex items-center gap-1.5">✓ Acompanhamento 24/7 antes, durante e depois do casamento</span>
-        <span class="flex items-center gap-1.5">✓ 100% personalizável</span>
+      <p class="text-gold-600 font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase text-xs mb-4 sm:mb-6 animate-on-scroll">
+        ✿ Websites de Casamento Premium ✿
+      </p>
+      
+      <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-olive-900 leading-tight mb-2 sm:mb-3 animate-on-scroll">
+        O vosso casamento merece
+      </h1>
+      <p class="font-script text-3xl sm:text-5xl md:text-6xl text-gradient-gold mb-3 sm:mb-4 animate-on-scroll">
+        um website inesquecível
+      </p>
+      
+      <!-- Animated decorative line -->
+      <div class="flex items-center justify-center gap-4 mb-6 sm:mb-8 animate-on-scroll">
+        <div class="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-gold-400 opacity-60"></div>
+        <span class="text-lg sm:text-xl heartbeat">💕</span>
+        <div class="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-gold-400 opacity-60"></div>
+      </div>
+
+      <p class="text-base sm:text-xl text-olive-600 max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed animate-on-scroll px-2">
+        Experiências digitais interativas que encantam os vossos convidados — 
+        do convite animado à galeria de fotos ao vivo.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 animate-on-scroll">
+        <div class="relative">
+          <!-- Flowers around button (hidden on mobile) -->
+          <svg class="hidden sm:block absolute -top-5 -left-5 w-10 h-10 text-gold-300 opacity-60 bloom" viewBox="0 0 30 30" fill="currentColor">
+            <circle cx="15" cy="8" r="4"/><circle cx="21" cy="13" r="4"/><circle cx="19" cy="20" r="4"/><circle cx="11" cy="20" r="4"/><circle cx="9" cy="13" r="4"/><circle cx="15" cy="14" r="3" fill="#a05614"/>
+          </svg>
+          <svg class="hidden sm:block absolute -bottom-4 -right-4 w-8 h-8 text-olive-300 opacity-50 bloom" style="animation-delay: -1.5s;" viewBox="0 0 30 30" fill="currentColor">
+            <circle cx="15" cy="8" r="3"/><circle cx="20" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><circle cx="12" cy="19" r="3"/><circle cx="10" cy="12" r="3"/><circle cx="15" cy="13" r="2.5" fill="#555c31"/>
+          </svg>
+          <a href="/contacto" class="btn-floral !px-7 !py-4 !text-base sm:!px-10 sm:!py-5 sm:!text-lg" id="hero-cta">
+            🥂 Agendar Demo Gratuita
+          </a>
+        </div>
+
+        <div class="relative">
+          <a href="/funcionalidades" class="btn-floral-outline !px-7 !py-4 !text-base sm:!px-10 sm:!py-5 sm:!text-lg">
+            🌸 Ver Funcionalidades
+          </a>
+        </div>
+      </div>
+
+      <!-- Trust pills -->
+      <div class="mt-8 sm:mt-14 animate-on-scroll">
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-5">
+          <span class="flex items-center gap-1.5 text-xs sm:text-sm text-olive-600 bg-white/80 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border border-gold-200/50 shadow-sm cursor-default">
+            💐 Demo já preparada
+          </span>
+          <span class="flex items-center gap-1.5 text-xs sm:text-sm text-olive-600 bg-white/80 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border border-gold-200/50 shadow-sm cursor-default">
+            💍 Sem compromisso
+          </span>
+          <span class="flex items-center gap-1.5 text-xs sm:text-sm text-olive-600 bg-white/80 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border border-gold-200/50 shadow-sm cursor-default">
+            🎨 100% personalizável
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom vine/branch decoration -->
+    <div class="absolute bottom-0 left-0 right-0 pointer-events-none" aria-hidden="true">
+      <svg class="w-full h-12 sm:h-24 text-olive-800" preserveAspectRatio="none" viewBox="0 0 1200 80" fill="currentColor">
+        <path d="M0,80 L0,60 Q150,30 300,50 Q450,70 600,40 Q750,10 900,45 Q1050,80 1200,50 L1200,80 Z" opacity="0.9"/>
+      </svg>
+      <!-- Flowers on the vine (hidden on mobile) -->
+      <svg class="hidden sm:block absolute bottom-8 left-[15%] w-6 h-6 text-gold-400 bloom" viewBox="0 0 20 20" fill="currentColor">
+        <circle cx="10" cy="5" r="3"/><circle cx="14" cy="9" r="3"/><circle cx="12" cy="14" r="3"/><circle cx="7" cy="14" r="3"/><circle cx="6" cy="9" r="3"/><circle cx="10" cy="9" r="2.5" fill="#a05614"/>
+      </svg>
+      <svg class="hidden sm:block absolute bottom-10 left-[35%] w-5 h-5 text-gold-300 bloom" style="animation-delay: -1s;" viewBox="0 0 20 20" fill="currentColor">
+        <circle cx="10" cy="5" r="2.5"/><circle cx="13" cy="8" r="2.5"/><circle cx="12" cy="13" r="2.5"/><circle cx="8" cy="13" r="2.5"/><circle cx="7" cy="8" r="2.5"/><circle cx="10" cy="9" r="2" fill="#a05614"/>
+      </svg>
+      <svg class="hidden sm:block absolute bottom-6 left-[55%] w-6 h-6 text-gold-400 bloom" style="animation-delay: -2s;" viewBox="0 0 20 20" fill="currentColor">
+        <circle cx="10" cy="5" r="3"/><circle cx="14" cy="9" r="3"/><circle cx="12" cy="14" r="3"/><circle cx="7" cy="14" r="3"/><circle cx="6" cy="9" r="3"/><circle cx="10" cy="9" r="2.5" fill="#a05614"/>
+      </svg>
+      <svg class="hidden sm:block absolute bottom-9 right-[20%] w-5 h-5 text-gold-300 bloom" style="animation-delay: -0.5s;" viewBox="0 0 20 20" fill="currentColor">
+        <circle cx="10" cy="5" r="2.5"/><circle cx="13" cy="8" r="2.5"/><circle cx="12" cy="13" r="2.5"/><circle cx="8" cy="13" r="2.5"/><circle cx="7" cy="8" r="2.5"/><circle cx="10" cy="9" r="2" fill="#a05614"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ==================== MARQUEE BANNER ==================== -->
+  <section class="bg-olive-800 py-4 overflow-hidden relative">
+    <div class="marquee-container">
+      <div class="marquee-content gap-8 text-beige-200 text-sm font-medium">
+        {[...marqueeItems, ...marqueeItems].map((item) => (
+          <span class="inline-flex items-center gap-2 px-4">{item}</span>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Features Preview -->
-  <section class="section-padding">
-    <div class="max-w-7xl mx-auto">
+  <!-- ==================== FEATURES ==================== -->
+  <section class="section-padding relative overflow-hidden">
+    <!-- Background florals -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <svg class="absolute top-10 right-0 w-80 h-80 opacity-[0.04] spin-reverse" viewBox="0 0 300 300" fill="#8d9650">
+        <path d="M150 20 C200 50, 270 70, 280 140 C290 210, 250 270, 200 280 C150 290, 80 270, 50 220 C20 170, 40 90, 90 50 C120 30, 130 20, 150 20Z"/>
+      </svg>
+      <svg class="absolute bottom-20 left-0 w-64 h-64 opacity-[0.04] spin-slow" viewBox="0 0 300 300" fill="#a9b06f">
+        <path d="M150 30 C200 50, 260 80, 270 150 C280 220, 240 270, 180 280 C120 290, 60 260, 40 200 C20 140, 60 70, 110 40 C130 30, 140 28, 150 30Z"/>
+      </svg>
+      <!-- Floating emojis -->
+      <div class="absolute top-[10%] left-[5%] text-2xl float opacity-10">🌿</div>
+      <div class="absolute bottom-[15%] right-[5%] text-2xl float-slow opacity-10">🍃</div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative">
       <div class="text-center mb-16 animate-on-scroll">
-        <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Tudo incluído</p>
+        <!-- Floral divider -->
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="h-px w-20 bg-gradient-to-r from-transparent to-gold-300"></div>
+          <svg width="28" height="28" viewBox="0 0 30 30" fill="#d99b1a" class="opacity-60 bloom">
+            <circle cx="15" cy="8" r="4"/><circle cx="21" cy="13" r="4"/><circle cx="19" cy="20" r="4"/><circle cx="11" cy="20" r="4"/><circle cx="9" cy="13" r="4"/><circle cx="15" cy="14" r="3" fill="#a05614"/>
+          </svg>
+          <div class="h-px w-20 bg-gradient-to-l from-transparent to-gold-300"></div>
+        </div>
         <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900 mb-4">
-          Funcionalidades que fazem a diferença
+          Funcionalidades que <span class="text-gradient-gold">encantam</span>
         </h2>
         <p class="text-olive-600 max-w-xl mx-auto">
-          Cada detalhe pensado para criar uma experiência premium para os vossos convidados.
+          Cada detalhe pensado para o vosso dia especial. ✨
         </p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
-        {features.map((f) => (
-          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-beige-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover:border-gold-200">
-            <span class="text-4xl block mb-4 group-hover:scale-110 transition-transform duration-300">{f.icon}</span>
+        {features.map((f, i) => (
+          <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-beige-200/80 shadow-sm overflow-hidden">
+            <!-- Corner flower -->
+            <svg class="absolute -top-3 -right-3 w-14 h-14 text-gold-200 opacity-40 bloom" viewBox="0 0 30 30" fill="currentColor">
+              <circle cx="15" cy="8" r="4"/><circle cx="21" cy="13" r="4"/><circle cx="19" cy="20" r="4"/><circle cx="11" cy="20" r="4"/><circle cx="9" cy="13" r="4"/><circle cx="15" cy="14" r="3" fill="#c07814" fill-opacity="0.5"/>
+            </svg>
+            <!-- Bottom left flower -->
+            <svg class="absolute -bottom-2 -left-2 w-10 h-10 text-olive-200 opacity-30" viewBox="0 0 30 30" fill="currentColor">
+              <circle cx="15" cy="8" r="3"/><circle cx="20" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><circle cx="12" cy="19" r="3"/><circle cx="10" cy="12" r="3"/><circle cx="15" cy="13" r="2.5" fill="#555c31"/>
+            </svg>
+            
+            <!-- Top gold line -->
+            <div class="absolute top-0 left-4 right-4 h-1 bg-gradient-to-r from-transparent via-gold-300 to-transparent opacity-40 rounded-full"></div>
+            
+            <!-- Floating emoji decoration -->
+            <span class="absolute top-4 right-4 text-lg opacity-30">{f.emoji}</span>
+            
+            <span class="text-5xl block mb-5 drop-shadow-sm">{f.icon}</span>
             <h3 class="font-serif text-xl font-semibold text-olive-800 mb-2">{f.title}</h3>
             <p class="text-olive-600 text-sm leading-relaxed">{f.desc}</p>
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center mt-12 animate-on-scroll">
-        <a href="/funcionalidades" class="btn-outline">
-          Ver todas as funcionalidades →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="section-padding bg-white">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16 animate-on-scroll">
-        <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Processo Simples</p>
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900 mb-4">
-          Como funciona
-        </h2>
-        <p class="text-olive-600 max-w-xl mx-auto">
-          Do primeiro contacto ao site online em menos de 2 semanas.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 stagger-children">
-        {steps.map((step) => (
-          <div class="relative text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold-50 border-2 border-gold-200 mb-6">
-              <span class="font-serif text-2xl font-bold text-gold-500">{step.number}</span>
+            
+            <!-- Learn more link -->
+            <div class="mt-4">
+              <a href="/funcionalidades" class="text-gold-500 text-sm font-medium hover:text-gold-600 inline-flex items-center gap-1">
+                Saber mais →
+              </a>
             </div>
-            <h3 class="font-serif text-xl font-semibold text-olive-800 mb-2">{step.title}</h3>
-            <p class="text-olive-600 text-sm leading-relaxed">{step.desc}</p>
           </div>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- Demo / Meeting -->
-  <section class="section-padding bg-olive-900">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="animate-on-scroll">
-        <p class="text-gold-400 font-medium text-sm uppercase tracking-wide mb-2">Sem Compromisso</p>
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-6">
-          Na primeira reunião, mostro tudo a funcionar
-        </h2>
-        <p class="text-beige-300 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-          Temos uma demo completa já preparada com todas as funcionalidades — convite animado, galeria ao vivo, 
-          mapa de mesas, RSVP e tudo o resto. Na reunião gratuita, veem o produto real a funcionar 
-          e decidem sem qualquer pressão. Zero compromisso.
-        </p>
-      </div>
-      <div class="grid sm:grid-cols-3 gap-6 mb-10 stagger-children">
-        <div class="bg-olive-800/50 rounded-xl p-6 border border-olive-700 hover:border-gold-500/30 transition-colors">
-          <div class="text-3xl mb-3">🎥</div>
-          <h3 class="font-semibold text-white mb-1">Demo Já Preparada</h3>
-          <p class="text-beige-400 text-sm">Veem todas as funcionalidades a funcionar ao vivo, antes de decidirem.</p>
-        </div>
-        <div class="bg-olive-800/50 rounded-xl p-6 border border-olive-700 hover:border-gold-500/30 transition-colors">
-          <div class="text-3xl mb-3">🧩</div>
-          <h3 class="font-semibold text-white mb-1">100% Modular</h3>
-          <p class="text-beige-400 text-sm">Escolhem as secções que querem. Nada é obrigatório.</p>
-        </div>
-        <div class="bg-olive-800/50 rounded-xl p-6 border border-olive-700 hover:border-gold-500/30 transition-colors">
-          <div class="text-3xl mb-3">✨</div>
-          <h3 class="font-semibold text-white mb-1">Features à Medida</h3>
-          <p class="text-beige-400 text-sm">Têm uma ideia diferente? Construímos juntos.</p>
-        </div>
-      </div>
-      <div class="animate-on-scroll">
-        <a href="/contacto" class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
-          Agendar Demo Gratuita →
+      <div class="text-center mt-14 animate-on-scroll">
+        <a href="/funcionalidades" class="btn-floral-outline group">
+          🌿 Ver catálogo completo
+          <span class="inline-block ml-1">→</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Benefits -->
-  <section class="section-padding">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16 animate-on-scroll">
-        <p class="text-gold-500 font-medium text-sm uppercase tracking-wide mb-2">Qualidade garantida</p>
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900 mb-4">
-          Performance e acessibilidade
+  <!-- ==================== DEMO SECTION ==================== -->
+  <section class="section-padding bg-olive-900 relative overflow-hidden">
+    <!-- Floral decorations on dark background -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <svg class="absolute top-10 left-10 w-36 h-36 opacity-[0.06] sway" viewBox="0 0 100 100" fill="#d99b1a">
+        <circle cx="50" cy="25" r="15"/><circle cx="70" cy="45" r="15"/><circle cx="60" cy="70" r="15"/><circle cx="35" cy="70" r="15"/><circle cx="30" cy="45" r="15"/><circle cx="50" cy="48" r="12"/>
+      </svg>
+      <svg class="absolute bottom-10 right-10 w-44 h-44 opacity-[0.05] sway" style="animation-delay: -3s;" viewBox="0 0 100 100" fill="#e8b832">
+        <circle cx="50" cy="25" r="15"/><circle cx="70" cy="45" r="15"/><circle cx="60" cy="70" r="15"/><circle cx="35" cy="70" r="15"/><circle cx="30" cy="45" r="15"/><circle cx="50" cy="48" r="12"/>
+      </svg>
+      <!-- More floating flowers -->
+      <div class="absolute top-[15%] right-[8%] text-2xl opacity-10 float-diagonal">🌸</div>
+      <div class="absolute bottom-[20%] left-[8%] text-2xl opacity-10 float">🌺</div>
+      <div class="absolute top-[50%] left-[50%] text-xl opacity-5 float-slow">💍</div>
+      <!-- Champagne glasses -->
+      <svg class="absolute top-[20%] right-[10%] w-20 h-20 opacity-[0.08] float-slow" viewBox="0 0 60 60" fill="none" stroke="#d99b1a" stroke-width="1.5">
+        <path d="M20 10 L20 25 C20 30, 25 35, 30 35 L30 50 M25 50 L35 50"/>
+        <path d="M40 10 L40 25 C40 30, 35 35, 30 35"/>
+        <ellipse cx="20" cy="10" rx="5" ry="2"/>
+        <ellipse cx="40" cy="10" rx="5" ry="2"/>
+      </svg>
+    </div>
+
+    <div class="max-w-4xl mx-auto text-center relative">
+      <div class="animate-on-scroll-scale">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gold-400/10 border-2 border-gold-400/30 mb-8 heartbeat">
+          <span class="text-5xl">🥂</span>
+        </div>
+
+        <p class="text-gold-400 font-medium text-sm tracking-[0.2em] uppercase mb-3">✨ Sem Compromisso ✨</p>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+          Na primeira reunião, mostro <span class="text-gradient-gold">tudo</span> a funcionar
         </h2>
-        <p class="text-olive-600 max-w-xl mx-auto">
-          Websites rápidos, seguros e acessíveis a todos — com zero custos recorrentes.
+        <p class="text-beige-300 text-lg leading-relaxed mb-12 max-w-2xl mx-auto">
+          Temos uma demo completa com todas as funcionalidades — convite animado, galeria ao vivo, 
+          mapa de mesas e tudo o resto. Veem o produto real e decidem sem pressão.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
-        {benefits.map((b) => (
-          <div class="text-center p-6 rounded-2xl bg-white border border-beige-200 hover:shadow-md transition-all">
-            <span class="text-3xl block mb-3">{b.icon}</span>
-            <h3 class="font-semibold text-olive-800 mb-1">{b.title}</h3>
-            <p class="text-olive-600 text-xs leading-relaxed">{b.desc}</p>
-          </div>
-        ))}
+      <div class="grid sm:grid-cols-3 gap-6 mb-14 stagger-children">
+        <div class="bg-olive-800/60 backdrop-blur-sm rounded-2xl p-8 border border-olive-700/50">
+          <span class="text-4xl block mb-4">🎥</span>
+          <h3 class="font-semibold text-white mb-2">Demo Completa</h3>
+          <p class="text-beige-400 text-sm">Tudo a funcionar ao vivo.</p>
+          <div class="w-12 h-0.5 bg-gold-400/40 mt-4 mx-auto"></div>
+        </div>
+        <div class="bg-olive-800/60 backdrop-blur-sm rounded-2xl p-8 border border-olive-700/50">
+          <span class="text-4xl block mb-4">🧩</span>
+          <h3 class="font-semibold text-white mb-2">100% Modular</h3>
+          <p class="text-beige-400 text-sm">Escolhem só o que querem.</p>
+          <div class="w-12 h-0.5 bg-gold-400/40 mt-4 mx-auto"></div>
+        </div>
+        <div class="bg-olive-800/60 backdrop-blur-sm rounded-2xl p-8 border border-olive-700/50">
+          <span class="text-4xl block mb-4">💐</span>
+          <h3 class="font-semibold text-white mb-2">À Medida</h3>
+          <p class="text-beige-400 text-sm">Ideia diferente? Construímos juntos.</p>
+          <div class="w-12 h-0.5 bg-gold-400/40 mt-4 mx-auto"></div>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll">
+        <div class="relative inline-block">
+          <svg class="absolute -top-6 -left-6 w-10 h-10 text-gold-400 opacity-40 bloom" viewBox="0 0 30 30" fill="currentColor">
+            <circle cx="15" cy="8" r="4"/><circle cx="21" cy="13" r="4"/><circle cx="19" cy="20" r="4"/><circle cx="11" cy="20" r="4"/><circle cx="9" cy="13" r="4"/><circle cx="15" cy="14" r="3" fill="#a05614"/>
+          </svg>
+          <a href="/contacto" class="btn-floral text-olive-900 font-bold" style="background: linear-gradient(135deg, #f3e092, #e8b832, #d99b1a);">
+            🌹 Agendar Demo Gratuita
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- ==================== PROCESS / HOW IT WORKS ==================== -->
+  <section class="section-padding bg-white relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-[10%] right-[5%] text-3xl opacity-10 float-slow">🌿</div>
+      <div class="absolute bottom-[10%] left-[5%] text-2xl opacity-10 float-diagonal">🍃</div>
+    </div>
+
+    <div class="max-w-4xl mx-auto relative">
+      <div class="text-center mb-16 animate-on-scroll">
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="h-px w-16 bg-gradient-to-r from-transparent to-gold-300"></div>
+          <span class="text-2xl bloom">🌱</span>
+          <div class="h-px w-16 bg-gradient-to-l from-transparent to-gold-300"></div>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-olive-900 mb-3">
+          Como funciona?
+        </h2>
+        <p class="text-olive-500">Simples como dizer "sim" 💍</p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-8 stagger-children">
+        <div class="text-center group">
+          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-gold-100 to-gold-200 border-2 border-gold-300 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:shadow-xl transition-all duration-400">
+            <span class="text-3xl group-hover:rotate-12 transition-transform">💬</span>
+          </div>
+          <div class="font-script text-gold-500 text-lg mb-1">1.</div>
+          <h3 class="font-serif text-lg font-bold text-olive-800 mb-2">Contactem-nos</h3>
+          <p class="text-olive-600 text-sm leading-relaxed">Enviem mensagem e respondemos em menos de 24h.</p>
+        </div>
+        <div class="text-center group">
+          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-gold-100 to-gold-200 border-2 border-gold-300 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:shadow-xl transition-all duration-400">
+            <span class="text-3xl group-hover:rotate-12 transition-transform">🎥</span>
+          </div>
+          <div class="font-script text-gold-500 text-lg mb-1">2.</div>
+          <h3 class="font-serif text-lg font-bold text-olive-800 mb-2">Demo Gratuita</h3>
+          <p class="text-olive-600 text-sm leading-relaxed">Mostramos tudo a funcionar ao vivo. Sem compromisso.</p>
+        </div>
+        <div class="text-center group">
+          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-gold-100 to-gold-200 border-2 border-gold-300 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:shadow-xl transition-all duration-400">
+            <span class="text-3xl group-hover:rotate-12 transition-transform">🚀</span>
+          </div>
+          <div class="font-script text-gold-500 text-lg mb-1">3.</div>
+          <h3 class="font-serif text-lg font-bold text-olive-800 mb-2">Website Online</h3>
+          <p class="text-olive-600 text-sm leading-relaxed">Criamos o vosso site perfeito em 3-5 semanas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FINAL CTA ==================== -->
   <section class="section-padding bg-gradient-to-br from-olive-900 via-olive-950 to-olive-900 text-center relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <div class="absolute top-10 left-1/4 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-10 right-1/4 w-80 h-80 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <!-- Large decorative flowers faded -->
+      <svg class="absolute top-0 left-0 w-56 h-56 opacity-[0.04] sway" viewBox="0 0 100 100" fill="#d99b1a">
+        <circle cx="50" cy="25" r="15"/><circle cx="70" cy="45" r="15"/><circle cx="60" cy="70" r="15"/><circle cx="35" cy="70" r="15"/><circle cx="30" cy="45" r="15"/><circle cx="50" cy="48" r="12"/>
+      </svg>
+      <svg class="absolute bottom-0 right-0 w-64 h-64 opacity-[0.03] sway" style="animation-delay: -2s;" viewBox="0 0 100 100" fill="#e8b832">
+        <circle cx="50" cy="25" r="15"/><circle cx="70" cy="45" r="15"/><circle cx="60" cy="70" r="15"/><circle cx="35" cy="70" r="15"/><circle cx="30" cy="45" r="15"/><circle cx="50" cy="48" r="12"/>
+      </svg>
+      <!-- Floating petals -->
+      <div class="absolute top-[20%] left-[10%] text-2xl opacity-10 float-diagonal">🌸</div>
+      <div class="absolute bottom-[15%] right-[10%] text-2xl opacity-10 float">🌺</div>
+      <div class="absolute top-[40%] right-[20%] text-xl opacity-8 float-slow">✨</div>
     </div>
+
     <div class="max-w-3xl mx-auto relative animate-on-scroll">
-      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">
-        Prontos para criar algo especial?
+      <div class="flex items-center justify-center gap-3 mb-8">
+        <div class="h-px w-16 bg-gradient-to-r from-transparent to-gold-400/40"></div>
+        <span class="text-3xl heartbeat">💍</span>
+        <div class="h-px w-16 bg-gradient-to-l from-transparent to-gold-400/40"></div>
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5">
+        Prontos para criar algo <span class="text-gradient-gold">especial</span>?
       </h2>
-      <p class="text-beige-300 text-lg mb-8 leading-relaxed">
-        Cada casamento é único. Vamos criar juntos o website perfeito para o vosso dia.
+      <p class="text-beige-300 text-lg mb-12 leading-relaxed">
+        Cada casamento é único. Vamos criar juntos o website perfeito para o vosso dia. 🌹
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/contacto" class="btn-primary text-lg px-10 py-4 bg-gold-400 hover:bg-gold-500">
-          Pedir Orçamento Grátis →
-        </a>
-        <a href="/precos" class="text-beige-300 hover:text-white font-medium transition-colors text-sm underline underline-offset-4">
-          Ver planos e planos
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+        <div class="relative group">
+          <svg class="absolute -top-5 -left-5 w-8 h-8 text-gold-400 opacity-40 group-hover:opacity-80 bloom transition-opacity" viewBox="0 0 30 30" fill="currentColor">
+            <circle cx="15" cy="8" r="4"/><circle cx="21" cy="13" r="4"/><circle cx="19" cy="20" r="4"/><circle cx="11" cy="20" r="4"/><circle cx="9" cy="13" r="4"/><circle cx="15" cy="14" r="3" fill="#a05614"/>
+          </svg>
+          <svg class="absolute -bottom-4 -right-4 w-7 h-7 text-gold-300 opacity-30 group-hover:opacity-70 bloom transition-opacity" style="animation-delay: -1s;" viewBox="0 0 30 30" fill="currentColor">
+            <circle cx="15" cy="8" r="3"/><circle cx="20" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><circle cx="12" cy="19" r="3"/><circle cx="10" cy="12" r="3"/><circle cx="15" cy="13" r="2.5"/>
+          </svg>
+          <a href="/contacto" class="btn-floral text-olive-900 font-bold pulse-glow" style="background: linear-gradient(135deg, #f3e092, #e8b832, #d99b1a);">
+            Pedir Orçamento Grátis
+          </a>
+        </div>
+        <a href="/precos" class="text-beige-300 hover:text-gold-400 font-medium transition-all text-sm underline underline-offset-4 decoration-gold-400/30 hover:decoration-gold-400 hover:tracking-wider duration-300">
+          Ver planos →
         </a>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  // ===== SPLASH SCREEN =====
+  const splash = document.getElementById('splash');
+  setTimeout(() => {
+    splash?.classList.add('hidden');
+  }, 1800);
+
+  // ===== WELCOME POPUP (show after 4s, only once per session) =====
+  const popup = document.getElementById('welcome-popup');
+  const closeBtn = document.getElementById('popup-close-btn');
+  const dismissBtn = document.getElementById('popup-dismiss');
+
+  function closePopup() {
+    popup?.classList.remove('active');
+    sessionStorage.setItem('popup-shown', 'true');
+  }
+
+  if (!sessionStorage.getItem('popup-shown')) {
+    setTimeout(() => {
+      popup?.classList.add('active');
+    }, 5000);
+  }
+
+  closeBtn?.addEventListener('click', closePopup);
+  dismissBtn?.addEventListener('click', closePopup);
+  popup?.addEventListener('click', (e) => {
+    if (e.target === popup) closePopup();
+  });
+
+  // ===== FALLING PETALS =====
+  const petalsContainer = document.getElementById('petals-container');
+  const petalEmojis = ['🌸', '🌺', '🌹', '🌷', '💮', '🏵️', '🪷'];
+  const petalColors = ['#f9a8c9', '#f7c6d7', '#ffd700', '#ff9ecd', '#ffb6c1', '#dda0dd'];
+
+  function createPetal() {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    
+    // Randomly choose between emoji and SVG petal
+    if (Math.random() > 0.5) {
+      petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+      petal.style.fontSize = (Math.random() * 16 + 12) + 'px';
+    } else {
+      const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+      petal.innerHTML = `<svg width="${Math.random() * 15 + 10}" height="${Math.random() * 20 + 14}" viewBox="0 0 20 30" fill="${color}"><ellipse cx="10" cy="15" rx="6" ry="12" opacity="0.7"/></svg>`;
+    }
+
+    petal.style.left = Math.random() * 100 + '%';
+    petal.style.animationDuration = (Math.random() * 5 + 6) + 's';
+    petal.style.animationDelay = Math.random() * 2 + 's';
+
+    petalsContainer?.appendChild(petal);
+
+    setTimeout(() => petal.remove(), 13000);
+  }
+
+  // Create petals periodically (less frequent on mobile)
+  const isMobile = window.innerWidth < 640;
+  setInterval(createPetal, isMobile ? 2000 : 800);
+  // Initial burst (fewer on mobile)
+  for (let i = 0; i < (isMobile ? 2 : 5); i++) {
+    setTimeout(createPetal, i * 300);
+  }
+
+  // ===== CONFETTI ON CTA CLICK =====
+  const heroCta = document.getElementById('hero-cta');
+  heroCta?.addEventListener('click', (e) => {
+    const colors = ['#e8b832', '#d99b1a', '#a9b06f', '#f3e092', '#ff69b4', '#ffd700'];
+    for (let i = 0; i < 30; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti-piece';
+      confetti.style.left = (e as MouseEvent).clientX + (Math.random() - 0.5) * 200 + 'px';
+      confetti.style.top = (e as MouseEvent).clientY + 'px';
+      confetti.style.width = Math.random() * 10 + 5 + 'px';
+      confetti.style.height = Math.random() * 10 + 5 + 'px';
+      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      confetti.style.animationDuration = Math.random() * 2 + 1.5 + 's';
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 4000);
+    }
+  });
+</script>

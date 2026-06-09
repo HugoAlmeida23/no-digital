@@ -3,11 +3,11 @@
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/', label: 'Início' },
-  { href: '/funcionalidades', label: 'Funcionalidades' },
-  { href: '/precos', label: 'Planos' },
-  { href: '/sobre', label: 'Sobre' },
-  { href: '/contacto', label: 'Contacto' },
+  { href: '/', label: 'Início', icon: '🏠' },
+  { href: '/funcionalidades', label: 'Funcionalidades', icon: '✨' },
+  { href: '/precos', label: 'Planos', icon: '💎' },
+  { href: '/sobre', label: 'Sobre', icon: '👋' },
+  { href: '/contacto', label: 'Contacto', icon: '💌' },
 ];
 
 function isActive(href: string): boolean {
@@ -18,45 +18,56 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-beige-50/90 backdrop-blur-md border-b border-beige-200/50">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Navegação principal">
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 group" aria-label="NoDigi — Página inicial">
-      <span class="font-script text-2xl text-gold-500 group-hover:text-gold-600 transition-colors">No</span>
-      <span class="font-serif text-lg font-semibold text-olive-800 group-hover:text-olive-900 transition-colors">Digi</span>
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-beige-50/90 backdrop-blur-md border-b border-beige-200/50">
+  <!-- Decorative top gold line -->
+  <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-60"></div>
+  
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-3" aria-label="Navegação principal">
+    <!-- Logo with floral decoration -->
+    <a href="/" class="flex items-center gap-2 group relative" aria-label="NoDigital — Página inicial">
+      <span class="absolute -top-1 -left-2 text-xs opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:-translate-y-1">🌸</span>
+      <span class="font-script text-3xl text-gold-500 group-hover:text-gold-600 transition-all duration-300 group-hover:scale-110">No</span>
+      <span class="font-serif text-lg font-semibold text-olive-800 group-hover:text-olive-900 transition-colors">Digital</span>
+      <span class="absolute -bottom-1 -right-2 text-xs opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:translate-y-1">✨</span>
     </a>
 
     <!-- Desktop Nav -->
-    <ul class="hidden md:flex items-center gap-8">
+    <ul class="hidden md:flex items-center gap-1">
       {navLinks.map((link) => (
         <li>
           <a
             href={link.href}
-            class={`text-sm font-medium transition-colors relative ${
+            class={`text-sm font-medium transition-all duration-300 relative px-4 py-2 rounded-full group ${
               isActive(link.href)
-                ? 'text-gold-500'
-                : 'text-olive-700 hover:text-gold-500'
+                ? 'text-gold-600 bg-gold-50'
+                : 'text-olive-700 hover:text-gold-500 hover:bg-gold-50/50'
             }`}
             aria-current={isActive(link.href) ? 'page' : undefined}
           >
-            {link.label}
+            <span class="relative z-10">{link.label}</span>
             {isActive(link.href) && (
-              <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold-500 rounded-full" />
+              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-1 bg-gold-400 rounded-full" />
             )}
+            <span class="absolute -top-1 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">{link.icon}</span>
           </a>
         </li>
       ))}
     </ul>
 
-    <!-- CTA -->
-    <a href="/contacto" class="hidden md:inline-flex btn-primary text-sm px-6 py-2.5">
-      Pedir Orçamento
-    </a>
+    <!-- CTA with flower -->
+    <div class="hidden md:block relative group">
+      <svg class="absolute -top-2 -right-2 w-5 h-5 text-gold-300 opacity-0 group-hover:opacity-80 group-hover:rotate-12 transition-all duration-400" viewBox="0 0 20 20" fill="currentColor">
+        <circle cx="10" cy="4" r="2.5"/><circle cx="14" cy="8" r="2.5"/><circle cx="12" cy="13" r="2.5"/><circle cx="8" cy="13" r="2.5"/><circle cx="6" cy="8" r="2.5"/><circle cx="10" cy="8" r="2" fill="#a05614"/>
+      </svg>
+      <a href="/contacto" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+        Pedir Orçamento
+      </a>
+    </div>
 
     <!-- Mobile menu button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden p-2 text-olive-700 hover:text-gold-500 transition-colors"
+      class="md:hidden p-2 text-olive-700 hover:text-gold-500 transition-colors rounded-full hover:bg-gold-50"
       aria-label="Abrir menu de navegação"
       aria-expanded="false"
       type="button"
@@ -71,24 +82,25 @@ function isActive(href: string): boolean {
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden hidden bg-beige-50/95 backdrop-blur-md border-b border-beige-200 px-4 pb-4" aria-label="Menu mobile">
+  <div id="mobile-menu" class="md:hidden hidden bg-beige-50/98 backdrop-blur-lg border-b border-beige-200 px-4 pb-6 pt-2" aria-label="Menu mobile">
     <ul class="space-y-1">
       {navLinks.map((link) => (
         <li>
           <a
             href={link.href}
-            class={`block py-3 px-4 rounded-xl font-medium transition-colors ${
+            class={`flex items-center gap-3 py-3 px-4 rounded-xl font-medium transition-all duration-300 ${
               isActive(link.href)
-                ? 'text-gold-500 bg-gold-50'
+                ? 'text-gold-600 bg-gold-50 shadow-sm'
                 : 'text-olive-700 hover:text-gold-500 hover:bg-beige-100'
             }`}
           >
+            <span class="text-lg">{link.icon}</span>
             {link.label}
           </a>
         </li>
       ))}
-      <li class="pt-2">
-        <a href="/contacto" class="btn-primary w-full text-center text-sm">
+      <li class="pt-3">
+        <a href="/contacto" class="flex items-center justify-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 text-white font-semibold w-full text-center text-sm py-3.5 rounded-full shadow-md">
           Pedir Orçamento
         </a>
       </li>
@@ -112,16 +124,18 @@ function isActive(href: string): boolean {
     btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
-  // Navbar shrink on scroll
+  // Navbar shrink on scroll with enhanced effects
   let lastScroll = 0;
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
     if (currentScroll > 50) {
-      navbar?.classList.add('shadow-md');
+      navbar?.classList.add('shadow-lg', 'py-0');
       navbar?.classList.remove('border-b', 'border-beige-200/50');
+      navbar?.classList.add('bg-beige-50/95');
     } else {
-      navbar?.classList.remove('shadow-md');
+      navbar?.classList.remove('shadow-lg', 'py-0');
       navbar?.classList.add('border-b', 'border-beige-200/50');
+      navbar?.classList.remove('bg-beige-50/95');
     }
     lastScroll = currentScroll;
   }, { passive: true });
