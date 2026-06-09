@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const base = import.meta.env.BASE_URL;
+
 ---
 
 <Layout title="Termos e Condições — Nó Digital" description="Termos e condições de utilização do website e serviços da Nó Digital.">
@@ -71,7 +71,7 @@ const base = import.meta.env.BASE_URL;
       <h2 class="font-serif text-2xl font-bold text-olive-800 mt-10 mb-4">8. Proteção de Dados</h2>
       <p class="text-olive-700 leading-relaxed mb-4">
         O tratamento de dados pessoais é regido pela nossa 
-        <a href={`${base}/privacidade`} class="text-gold-500 hover:text-gold-600">Política de Privacidade</a>, 
+        <a href="/privacidade" class="text-gold-500 hover:text-gold-600">Política de Privacidade</a>, 
         que constitui parte integrante destes termos.
       </p>
 
@@ -90,7 +90,7 @@ const base = import.meta.env.BASE_URL;
       </p>
 
       <div class="mt-12 pt-8 border-t border-beige-200">
-        <a href={base} class="text-gold-500 hover:text-gold-600 font-medium">← Voltar ao início</a>
+        <a href="/" class="text-gold-500 hover:text-gold-600 font-medium">← Voltar ao início</a>
       </div>
     </div>
   </section>

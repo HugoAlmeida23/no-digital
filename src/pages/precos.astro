@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const base = import.meta.env.BASE_URL;
+
 
 const plans = [
   {
@@ -60,20 +60,11 @@ const plans = [
   },
 ];
 
-const included = [
-  { icon: '🆓', text: 'Hosting gratuito para sempre' },
-  { icon: '🔒', text: 'HTTPS/SSL automático' },
-  { icon: '🌐', text: 'Domínio personalizado incluído' },
-  { icon: '📱', text: '100% responsivo e mobile-first' },
-  { icon: '♿', text: 'Acessibilidade ARIA e teclado' },
-  { icon: '⚡', text: 'Performance máxima (site estático)' },
-];
-
 const faqs = [
-  { q: 'Quanto tempo demora a criar o website?', a: 'Normalmente entre 1 a 2 semanas após recebermos todos os conteúdos (textos, fotos, detalhes do evento). Projetos mais complexos podem demorar até 3 semanas.' },
-  { q: 'Preciso de conhecimentos técnicos?', a: 'Não! Nós tratamos de tudo. Vocês só precisam de nos enviar os conteúdos e preferências — textos, fotos, cores e detalhes do evento.' },
+  { q: 'Quanto tempo demora a criar o website?', a: 'Normalmente entre 3 a 5 semanas após recebermos todos os conteúdos (textos, fotos, detalhes do evento). Projetos mais complexos podem demorar até 2 meses.' },
+  { q: 'Preciso de conhecimentos técnicos?', a: 'Não! Nós tratamos de tudo. Vocês só precisam de nos enviar os conteúdos e preferências tais como textos, fotos, cores e detalhes do evento.' },
   { q: 'Posso fazer alterações depois?', a: 'Claro! Incluímos revisões no processo. Alterações menores após entrega são incluídas. Alterações adicionais maiores têm um custo simbólico.' },
-  { q: 'E se precisar de ajuda no dia do casamento?', a: 'No plano Premium, oferecemos suporte por WhatsApp no dia do evento para qualquer questão técnica — galeria, mapa de mesas, check-in, etc.' },
+  { q: 'E se precisar de ajuda no dia do casamento?', a: 'No plano Premium, oferecemos suporte por WhatsApp no dia do evento para qualquer questão técnica como na galeria, mapa de mesas, check-in, etc.' },
   { q: 'Aceitam pagamento em prestações?', a: 'Sim! Podem pagar 50% no início e 50% na entrega final. Para o plano À Medida, podemos definir condições personalizadas.' },
   { q: 'Como funciona a reunião gratuita?', a: 'Agendamos uma videochamada onde mostramos a demo completa já preparada — com todas as funcionalidades a funcionar ao vivo. Veem o produto real, fazem perguntas e decidem sem qualquer compromisso.' },
   { q: 'Os dados dos convidados estão seguros?', a: 'Sim. Usamos Supabase com infraestrutura na UE, encriptação em trânsito (HTTPS) e não partilhamos dados com terceiros. Cumpre o RGPD.' },
@@ -89,7 +80,7 @@ const faqs = [
         Encontrem o plano ideal
       </h1>
       <p class="text-olive-600 text-lg leading-relaxed">
-        Cada casamento é único — por isso cada orçamento é personalizado. 
+        Cada casamento é único, por isso cada orçamento é personalizado. 
         Escolham o plano que faz sentido e peçam uma proposta à medida, sem compromisso.
       </p>
     </div>
@@ -131,7 +122,7 @@ const faqs = [
           </ul>
 
           <a
-            href={`${base}/contacto`}
+            href="/contacto"
             class={`block text-center py-3.5 rounded-full font-semibold transition-all ${
               plan.highlighted
                 ? 'bg-gold-400 hover:bg-gold-500 text-olive-900 shadow-lg'
@@ -142,26 +133,6 @@ const faqs = [
           </a>
         </div>
       ))}
-    </div>
-  </section>
-
-  <!-- What's always included -->
-  <section class="section-padding bg-white">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-olive-900 mb-2">
-          Sempre incluído em todos os planos
-        </h2>
-        <p class="text-olive-500 text-sm">Sem custos escondidos, sem surpresas.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
-        {included.map((item) => (
-          <div class="flex items-center gap-3 bg-beige-50 rounded-xl px-5 py-4 border border-beige-200">
-            <span class="text-xl flex-shrink-0">{item.icon}</span>
-            <span class="text-sm text-olive-700 font-medium">{item.text}</span>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -201,7 +172,7 @@ const faqs = [
       <p class="text-beige-300 mb-8">
         Enviem-nos uma mensagem e respondemos em menos de 24 horas com uma proposta à medida.
       </p>
-      <a href={`${base}/contacto`} class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
+      <a href="/contacto" class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
         Pedir Orçamento Grátis →
       </a>
     </div>

@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const base = import.meta.env.BASE_URL;
+
 
 const featureGroups = [
   {
@@ -161,7 +161,7 @@ const featureGroups = [
         Tudo o que o vosso website pode ter
       </h1>
       <p class="text-olive-600 text-lg leading-relaxed">
-        Cada funcionalidade é modular — escolhem apenas o que faz sentido para vocês. 
+        Cada funcionalidade é modular, escolhem apenas o que faz sentido para vocês. 
         Nada é obrigatório, tudo é personalizável.
       </p>
     </div>
@@ -208,7 +208,7 @@ const featureGroups = [
       <p class="text-olive-600 leading-relaxed mb-6">
         Nomes, data, locais, fotos, cores, fontes, textos, quais secções incluir, paleta de cores, 
         tema claro/escuro, pergunta do quiz, métodos de pagamento, ementa, timeline, FAQs, 
-        layout das mesas — literalmente tudo pode ser adaptado ao vosso gosto.
+        layout das mesas. Literalmente tudo pode ser adaptado ao vosso gosto.
       </p>
       <p class="text-olive-500 text-sm">
         Têm uma ideia que não está na lista? Criamos funcionalidades à medida.
@@ -221,13 +221,13 @@ const featureGroups = [
     <div class="max-w-2xl mx-auto animate-on-scroll">
       <h2 class="font-serif text-3xl font-bold text-white mb-4">Gostaram do que viram?</h2>
       <p class="text-beige-300 mb-8">
-        Agendem uma reunião gratuita e sem compromisso — mostramos a demo completa com tudo a funcionar ao vivo.
+        Agendem uma reunião gratuita e sem compromisso, mostramos a demo completa com tudo a funcionar ao vivo.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href={`${base}/contacto`} class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
+        <a href="/contacto" class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
           Agendar Demo Gratuita →
         </a>
-        <a href={`${base}/precos`} class="text-beige-300 hover:text-white font-medium transition-colors text-sm underline underline-offset-4">
+        <a href="/precos" class="text-beige-300 hover:text-white font-medium transition-colors text-sm underline underline-offset-4">
           Ver planos
         </a>
       </div>

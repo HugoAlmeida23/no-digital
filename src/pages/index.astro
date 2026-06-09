@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const base = import.meta.env.BASE_URL;
+
 
 const features = [
   { icon: '✉️', title: 'Convite Animado', desc: 'Envelope interativo com selo de cera e animação cinematográfica que surpreende os convidados.' },
@@ -26,10 +26,10 @@ const steps = [
 ];
 
 const benefits = [
-  { icon: '🚀', title: 'Ultrarrápido', desc: 'Site estático com carregamento instantâneo em qualquer dispositivo.' },
-  { icon: '📱', title: 'Mobile-First', desc: '100% responsivo — perfeito no telemóvel, tablet e desktop.' },
-  { icon: '♿', title: 'Acessível', desc: 'Navegável por teclado, compatível com leitores de ecrã, suporte a reduced motion.' },
-  { icon: '🔒', title: 'Seguro', desc: 'HTTPS automático, sem tracking de terceiros, dados na UE.' },
+  { icon: '🚀', title: 'Ultrarrápido', desc: 'Site com carregamento instantâneo em qualquer dispositivo.' },
+  { icon: '📱', title: 'Mobile-First', desc: '100% responsivo e desenhado para telemóvel, tablet e desktop.' },
+  { icon: '♿', title: 'Acessível', desc: 'Navegável por teclado, compatível com leitores de ecrã, suporte para daltónicos, etc.' },
+  { icon: '🔒', title: 'Seguro', desc: 'Dados dos convidados encriptados.' },
 ];
 ---
 
@@ -50,14 +50,13 @@ const benefits = [
         <span class="text-gradient">um website inesquecível</span>
       </h1>
       <p class="text-lg sm:text-xl text-olive-600 max-w-2xl mx-auto mb-10 leading-relaxed animate-on-scroll">
-        Experiências digitais elegantes e interativas que encantam os vossos convidados 
-        — do convite animado à galeria de fotos ao vivo. Sem custos mensais.
+        Experiências digitais elegantes e interativas que encantam os vossos convidados do convite animado à galeria de fotos ao vivo.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-on-scroll">
-        <a href={`${base}/contacto`} class="btn-primary text-lg px-10 py-4 pulse-glow">
+        <a href="/contacto" class="btn-primary text-lg px-10 py-4 pulse-glow">
           Pedir Orçamento Grátis
         </a>
-        <a href={`${base}/funcionalidades`} class="btn-outline text-lg px-10 py-4">
+        <a href="/funcionalidades" class="btn-outline text-lg px-10 py-4">
           Ver Funcionalidades
         </a>
       </div>
@@ -65,21 +64,9 @@ const benefits = [
       <!-- Trust indicators -->
       <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-olive-500 animate-on-scroll">
         <span class="flex items-center gap-1.5">✓ Resposta em 24h</span>
-        <span class="flex items-center gap-1.5">✓ Hosting gratuito</span>
+        <span class="flex items-center gap-1.5">✓ Acompanhamento 24/7 antes, durante e depois do casamento</span>
         <span class="flex items-center gap-1.5">✓ 100% personalizável</span>
       </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="bg-olive-900 py-16 px-4">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center stagger-children">
-      {stats.map((stat) => (
-        <div>
-          <p class="font-serif text-3xl md:text-4xl font-bold text-gold-400">{stat.value}</p>
-          <p class="text-beige-300 text-sm mt-1">{stat.label}</p>
-        </div>
-      ))}
     </div>
   </section>
 
@@ -107,7 +94,7 @@ const benefits = [
       </div>
 
       <div class="text-center mt-12 animate-on-scroll">
-        <a href={`${base}/funcionalidades`} class="btn-outline">
+        <a href="/funcionalidades" class="btn-outline">
           Ver todas as funcionalidades →
         </a>
       </div>
@@ -173,7 +160,7 @@ const benefits = [
         </div>
       </div>
       <div class="animate-on-scroll">
-        <a href={`${base}/contacto`} class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
+        <a href="/contacto" class="btn-primary bg-gold-400 hover:bg-gold-500 text-lg px-10 py-4">
           Agendar Demo Gratuita →
         </a>
       </div>
@@ -216,13 +203,13 @@ const benefits = [
         Prontos para criar algo especial?
       </h2>
       <p class="text-beige-300 text-lg mb-8 leading-relaxed">
-        Cada casamento é único. Vamos criar juntos o website perfeito para o vosso dia — sem compromisso.
+        Cada casamento é único. Vamos criar juntos o website perfeito para o vosso dia.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href={`${base}/contacto`} class="btn-primary text-lg px-10 py-4 bg-gold-400 hover:bg-gold-500">
+        <a href="/contacto" class="btn-primary text-lg px-10 py-4 bg-gold-400 hover:bg-gold-500">
           Pedir Orçamento Grátis →
         </a>
-        <a href={`${base}/precos`} class="text-beige-300 hover:text-white font-medium transition-colors text-sm underline underline-offset-4">
+        <a href="/precos" class="text-beige-300 hover:text-white font-medium transition-colors text-sm underline underline-offset-4">
           Ver planos e planos
         </a>
       </div>
