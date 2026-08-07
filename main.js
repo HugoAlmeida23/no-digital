@@ -8,25 +8,27 @@
   'use strict';
 
   // ============================================================
-  // MAGNETIC BUTTONS (gentle pull)
+  // MAGNETIC BUTTONS (gentle pull, desktop only)
   // ============================================================
   const magneticEls = document.querySelectorAll('[data-magnetic]');
 
-  magneticEls.forEach((el) => {
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const strength = 0.2;
-      el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
-    });
+  if (!window.matchMedia('(max-width: 768px)').matches) {
+    magneticEls.forEach((el) => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const strength = 0.2;
+        el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+      });
 
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = 'translate(0, 0)';
-      el.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-      setTimeout(() => { el.style.transition = ''; }, 600);
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = 'translate(0, 0)';
+        el.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(() => { el.style.transition = ''; }, 600);
+      });
     });
-  });
+  }
 
   // ============================================================
   // SCROLL REVEAL
@@ -48,26 +50,29 @@
   revealElements.forEach((el) => revealObserver.observe(el));
 
   // ============================================================
-  // GENTLE TILT EFFECT ON CARDS
+  // GENTLE TILT EFFECT ON CARDS (desktop only)
   // ============================================================
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const tiltCards = document.querySelectorAll('[data-tilt]');
 
-  tiltCards.forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      const rotateX = (0.5 - y) * 8;
-      const rotateY = (x - 0.5) * 8;
-      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
-    });
+  if (!isMobile) {
+    tiltCards.forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const rotateX = (0.5 - y) * 8;
+        const rotateY = (x - 0.5) * 8;
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+      });
 
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-      card.style.transition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
-      setTimeout(() => { card.style.transition = ''; }, 700);
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        card.style.transition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(() => { card.style.transition = ''; }, 700);
+      });
     });
-  });
+  }
 
   // ============================================================
   // COUNTER ANIMATION

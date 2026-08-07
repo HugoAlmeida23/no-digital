@@ -962,10 +962,118 @@ img { max-width: 100%; height: auto; }
    RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {
-  .hero { padding: 6rem 0 3rem; }
-  .hero-stats { gap: 2rem; }
-  .services-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
+  /* --- HERO --- */
+  .hero { padding: 5.5rem 0 2.5rem; min-height: auto; }
+  .hero-title { font-size: 2.2rem; margin-bottom: 1rem; }
+  .hero-subtitle { font-size: 1rem; margin-bottom: 1.5rem; }
+  .hero-cta { margin-bottom: 2.5rem; }
+  .hero-stats { gap: 1.5rem; padding-top: 2rem; }
+  .stat-number { font-size: 1.5rem; }
+  .scroll-indicator { display: none; }
+
+  /* --- SECTIONS tighter --- */
+  .section { padding: clamp(3rem, 8vw, 5rem) 0; }
+  .section-header { margin-bottom: 2rem; }
+  .section-title { font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .section-subtitle { font-size: 0.95rem; }
+
+  /* --- HORIZONTAL SCROLL CARDS (services + admin) --- */
+  .services-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .services-grid::-webkit-scrollbar { display: none; }
+  .services-grid .service-card {
+    min-width: 280px;
+    max-width: 300px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 1.75rem;
+  }
+  .service-title { font-size: 1.05rem; }
+  .service-desc { font-size: 0.85rem; margin-bottom: 1rem; }
+  .service-icon { width: 44px; height: 44px; margin-bottom: 1rem; }
+
+  /* --- STEPS tighter --- */
+  .step { padding: 2rem 0; gap: 1rem; }
+  .step-number { font-size: 2.5rem; }
+  .step-title { font-size: 1.15rem; }
+  .step-desc { font-size: 0.9rem; }
+
+  /* --- PRICING horizontal scroll --- */
+  .pricing-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .pricing-grid::-webkit-scrollbar { display: none; }
+  .pricing-card {
+    min-width: 280px;
+    max-width: 300px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 2rem;
+  }
+  .pricing-name { font-size: 1.35rem; }
+
+  /* --- TESTIMONIALS horizontal scroll --- */
+  .testimonials-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .testimonials-grid::-webkit-scrollbar { display: none; }
+  .testimonial-card {
+    min-width: 280px;
+    max-width: 300px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 1.75rem;
+  }
+  .testimonial-text { font-size: 1rem; }
+
+  /* --- CONTACT --- */
+  .contact-title { font-size: 1.75rem; }
+  .contact-form { padding: 1.5rem; }
+
+  /* --- BUTTONS smaller on mobile --- */
+  .btn-primary { padding: 0.85rem 1.5rem; font-size: 0.9rem; }
+  .btn-ghost { padding: 0.85rem 1.5rem; font-size: 0.9rem; }
+
+  /* --- MARQUEE --- */
+  .marquee-section { padding: 1.25rem 0; }
+  .marquee-track { font-size: 1rem; }
+
+  /* --- Swipe hint for carousels --- */
+  .services-grid::after,
+  .pricing-grid::after,
+  .testimonials-grid::after {
+    content: '';
+    min-width: 1.5rem;
+    flex-shrink: 0;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .hero-title { font-size: 1.85rem; }
+  .services-grid .service-card,
+  .pricing-card,
+  .testimonial-card { min-width: 260px; }
+  .container { padding: 0 1rem; }
 }
 
 /* Focus visible for keyboard users */
@@ -985,4 +1093,24 @@ img { max-width: 100%; height: auto; }
 /* Admin panel section */
 .admin-panel {
   background: var(--cream);
+}
+
+/* Swipe hint on mobile carousels */
+.swipe-hint {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 0.75rem;
+}
+.swipe-hint svg {
+  animation: swipeHint 1.5s ease-in-out infinite;
+}
+@keyframes swipeHint {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+@media (max-width: 768px) {
+  .swipe-hint { display: flex; }
 }
