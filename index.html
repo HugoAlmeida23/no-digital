@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Websites de casamento elegantes e interativos, feitos à medida do vosso amor. Porto, Portugal." />
+  <title>Nó Digital · O vosso amor, online.</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Soft texture -->
+  <div class="noise"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo" data-magnetic>
+      <span class="logo-no">Nó</span><span class="logo-digital">Digital</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services" class="nav-link" data-magnetic>O que fazemos</a>
+      <a href="#work" class="nav-link" data-magnetic>Como funciona</a>
+      <a href="#pricing" class="nav-link" data-magnetic>Planos</a>
+      <a href="#contact" class="nav-link nav-link-cta" data-magnetic>Falar connosco</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services" class="mobile-link">O que fazemos</a>
+    <a href="#work" class="mobile-link">Como funciona</a>
+    <a href="#pricing" class="mobile-link">Planos</a>
+    <a href="#contact" class="mobile-link">Falar connosco</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <canvas id="hero-canvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow" data-reveal>
+        <span class="eyebrow-line"></span>
+        <span>Websites de casamento</span>
+      </div>
+      <h1 class="hero-title" data-reveal>
+        <span class="title-line"><span class="title-word">O vosso amor</span></span>
+        <span class="title-line"><span class="title-word">merece uma história</span></span>
+        <span class="title-line"><span class="title-word title-highlight">bonita de contar.</span></span>
+      </h1>
+      <p class="hero-subtitle" data-reveal>
+        O vosso amor, online.
+      </p>
+      <div class="hero-cta" data-reveal>
+        <a href="#contact" class="btn-primary" data-magnetic>
+          <span class="btn-text">Agendar demo gratuita</span>
+          <span class="btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </a>
+        <a href="#work" class="btn-ghost" data-magnetic>
+          <span class="btn-text">Ver como funciona</span>
+        </a>
+      </div>
+      <div class="hero-stats" data-reveal>
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Feito à medida</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">24h</span>
+          <span class="stat-label">Tempo de resposta</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">Porto</span>
+          <span class="stat-label">Feito em Portugal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services / Features -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-number">o que criamos</span>
+        <h2 class="section-title">Cada detalhe pensado com amor</h2>
+        <p class="section-subtitle">Funcionalidades que surpreendem os convidados e tornam o vosso dia ainda mais especial.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Convite animado</h3>
+          <p class="service-desc">Um envelope elegante com selo dourado que se abre e revela os vossos nomes. A primeira impressão que os convidados vão adorar.</p>
+          <span class="service-tag">Encanto</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Contagem decrescente</h3>
+          <p class="service-desc">A emoção a crescer a cada segundo até ao grande dia. Com uma mensagem especial quando finalmente chega.</p>
+          <span class="service-tag">Emoção</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+            </svg>
+          </div>
+          <h3 class="service-title">RSVP simples</h3>
+          <p class="service-desc">Os convidados confirmam presença, acompanhantes e alergias num toque. Tudo organizado para vocês, sem complicações.</p>
+          <span class="service-tag">Prático</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Galeria ao vivo</h3>
+          <p class="service-desc">Os convidados partilham fotos durante a festa e o álbum cresce em tempo real. Memórias espontâneas que ficam para sempre.</p>
+          <span class="service-tag">Memórias</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Mapa de mesas</h3>
+          <p class="service-desc">Cada convidado encontra o seu lugar em segundos. Sem confusões, sem filas, sem stress no grande dia.</p>
+          <span class="service-tag">Conforto</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Pedidos de música</h3>
+          <p class="service-desc">Os convidados sugerem as músicas que querem ouvir. Vocês entregam a lista ao DJ e a festa fica perfeita.</p>
+          <span class="service-tag">Festa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Panel -->
+  <section class="section admin-panel" id="admin">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-number">o vosso painel privado</span>
+        <h2 class="section-title">Tudo sob controlo, num só lugar</h2>
+        <p class="section-subtitle">Um painel de administração completo, só para vocês. Vejam tudo em tempo real, sem complicações.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Dashboard em tempo real</h3>
+          <p class="service-desc">Total de convidados, confirmados, pendentes, recusados e acompanhantes, tudo num resumo visual claro, atualizado ao segundo.</p>
+          <span class="service-tag">Visão geral</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Gestão de convidados</h3>
+          <p class="service-desc">Lista completa pesquisável com nome, email, telefone, estado do RSVP, acompanhantes, alergias e mensagens. Edição rápida de qualquer campo.</p>
+          <span class="service-tag">Organização</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Check-in no dia</h3>
+          <p class="service-desc">Marquem a chegada de cada convidado com um toque. Vejam em tempo real quem já chegou e quem falta, diretamente no telemóvel.</p>
+          <span class="service-tag">Dia do casamento</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8l-2 4h12z"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Gestão de mesas</h3>
+          <p class="service-desc">Criem mesas, definam capacidade, atribuam convidados e vejam a ocupação de cada uma. Reorganizem a qualquer momento com drag & drop.</p>
+          <span class="service-tag">Planeamento</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Moderação de fotos</h3>
+          <p class="service-desc">Vejam todas as fotos submetidas pelos convidados. Aprovem ou removam antes de ficarem visíveis na galeria. Controlo total na ponta dos dedos.</p>
+          <span class="service-tag">Privacidade</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Pedidos de música</h3>
+          <p class="service-desc">Vejam todas as sugestões dos convidados organizadas por número de pedidos. Exportem a lista pronta para entregar ao DJ ou à banda.</p>
+          <span class="service-tag">Festa</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Exportações</h3>
+          <p class="service-desc">Exportem tudo em CSV ou PDF: lista de convidados, confirmações, alergias, mesas, check-ins e pedidos de música. Prontos para imprimir ou partilhar.</p>
+          <span class="service-tag">Dados</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Segurança e privacidade</h3>
+          <p class="service-desc">Acesso protegido por password. Dados encriptados, alojados na UE, conformes com o RGPD. Só vocês veem a informação dos convidados.</p>
+          <span class="service-tag">Confiança</span>
+        </div>
+        <div class="service-card" data-reveal data-tilt>
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Mensagens dos convidados</h3>
+          <p class="service-desc">Leiam as mensagens e votos que os convidados deixam ao confirmar presença. Um cantinho de carinho que podem guardar para sempre.</p>
+          <span class="service-tag">Amor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section how-it-works" id="work">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-number">como funciona</span>
+        <h2 class="section-title">Do sonho ao ecrã, com simplicidade</h2>
+        <p class="section-subtitle">Três passos simples. Nós tratamos de tudo, vocês aproveitam o caminho até ao altar.</p>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal>
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3 class="step-title">Conversamos</h3>
+            <p class="step-desc">Agendam uma demo gratuita e mostramos tudo a funcionar ao vivo. Sem compromisso, sem pressão. Veem o produto real e decidem com calma.</p>
+          </div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3 class="step-title">Damos vida à vossa história</h3>
+            <p class="step-desc">Enviam os vossos textos, fotos e detalhes. Nós transformamos tudo num website bonito e funcional, com previews para irem aprovando ao longo do caminho.</p>
+          </div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3 class="step-title">Partilham com quem amam</h3>
+            <p class="step-desc">O site fica online antes do grande dia. É só partilhar o link com os convidados e deixar que a emoção comece muito antes da cerimónia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-section">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Convite animado</span>
+        <span class="marquee-dot"></span>
+        <span>Galeria ao vivo</span>
+        <span class="marquee-dot"></span>
+        <span>RSVP simples</span>
+        <span class="marquee-dot"></span>
+        <span>Mapa de mesas</span>
+        <span class="marquee-dot"></span>
+        <span>Contagem decrescente</span>
+        <span class="marquee-dot"></span>
+        <span>Pedidos de música</span>
+        <span class="marquee-dot"></span>
+        <span>Lista de presentes</span>
+        <span class="marquee-dot"></span>
+        <span>Feito com amor</span>
+        <span class="marquee-dot"></span>
+        <span>Convite animado</span>
+        <span class="marquee-dot"></span>
+        <span>Galeria ao vivo</span>
+        <span class="marquee-dot"></span>
+        <span>RSVP simples</span>
+        <span class="marquee-dot"></span>
+        <span>Mapa de mesas</span>
+        <span class="marquee-dot"></span>
+        <span>Contagem decrescente</span>
+        <span class="marquee-dot"></span>
+        <span>Pedidos de música</span>
+        <span class="marquee-dot"></span>
+        <span>Lista de presentes</span>
+        <span class="marquee-dot"></span>
+        <span>Feito com amor</span>
+        <span class="marquee-dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-number">planos</span>
+        <h2 class="section-title">O plano certo para o vosso dia</h2>
+        <p class="section-subtitle">Cada casamento é único. Cada orçamento é feito à medida, sem surpresas.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card" data-reveal data-tilt>
+          <div class="pricing-header">
+            <h3 class="pricing-name">Essencial</h3>
+            <p class="pricing-tagline">Para casamentos íntimos que querem um toque digital elegante e acolhedor.</p>
+          </div>
+          <ul class="pricing-features">
+            <li>Convite animado com selo</li>
+            <li>Hero com foto do casal</li>
+            <li>Contagem decrescente</li>
+            <li>RSVP básico</li>
+            <li>FAQ personalizável</li>
+            <li>Domínio personalizado</li>
+          </ul>
+          <a href="#contact" class="pricing-btn" data-magnetic>
+            <span>Pedir orçamento</span>
+          </a>
+        </div>
+        <div class="pricing-card pricing-card-featured" data-reveal data-tilt>
+          <div class="pricing-badge">Mais escolhido</div>
+          <div class="pricing-header">
+            <h3 class="pricing-name">Premium</h3>
+            <p class="pricing-tagline">A experiência completa para casamentos que querem emocionar do início ao fim.</p>
+          </div>
+          <ul class="pricing-features">
+            <li>Tudo do Essencial</li>
+            <li>Galeria de fotos ao vivo</li>
+            <li>Mapa de mesas interativo</li>
+            <li>RSVP com acompanhantes</li>
+            <li>Pedidos de música</li>
+            <li>Painel de administração</li>
+            <li>Suporte no dia por WhatsApp</li>
+          </ul>
+          <a href="#contact" class="pricing-btn pricing-btn-featured" data-magnetic>
+            <span>Pedir orçamento</span>
+          </a>
+        </div>
+        <div class="pricing-card" data-reveal data-tilt>
+          <div class="pricing-header">
+            <h3 class="pricing-name">À medida</h3>
+            <p class="pricing-tagline">Para sonhos únicos que precisam de algo verdadeiramente especial.</p>
+          </div>
+          <ul class="pricing-features">
+            <li>Tudo do Premium</li>
+            <li>Design totalmente personalizado</li>
+            <li>Funcionalidades à medida</li>
+            <li>Website bilingue</li>
+            <li>Integrações especiais</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          <a href="#contact" class="pricing-btn" data-magnetic>
+            <span>Falar connosco</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info" data-reveal>
+          <span class="section-number">falar connosco</span>
+          <h2 class="contact-title">Vamos dar vida<br />à <span class="text-gradient">vossa história</span></h2>
+          <p class="contact-subtitle">Agendem uma demo gratuita e sem compromisso. Mostramos o produto ao vivo, respondem às vossas dúvidas, e decidem com calma.</p>
+          <div class="contact-details">
+            <a href="mailto:hugosilva2320@gmail.com" class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/>
+              </svg>
+              <span>hugosilva2320@gmail.com</span>
+            </a>
+            <a href="https://wa.me/351911820236" class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              <span>+351 911 820 236</span>
+            </a>
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Porto, Portugal</span>
+            </div>
+          </div>
+          <div class="contact-badges">
+            <span class="badge">Demo gratuita</span>
+            <span class="badge">Sem compromisso</span>
+            <span class="badge">Resposta em 24h</span>
+            <span class="badge">Pagamento 50/50</span>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form" data-reveal>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nome *</label>
+              <input type="text" id="name" name="name" required placeholder="Os vossos nomes" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="email@exemplo.pt" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Telemóvel</label>
+              <input type="tel" id="phone" name="phone" placeholder="+351 9XX XXX XXX" />
+            </div>
+            <div class="form-group">
+              <label for="date">Data do casamento</label>
+              <input type="date" id="date" name="date" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem *</label>
+            <textarea id="message" name="message" required rows="4" placeholder="Contem-nos sobre o vosso casamento: o local, o estilo, o que imaginam..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full" data-magnetic>
+            <span class="btn-text">Enviar mensagem</span>
+            <span class="btn-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </button>
+          <div class="form-feedback" id="form-feedback"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="logo-no">Nó</span><span class="logo-digital">Digital</span>
+          </a>
+          <p class="footer-desc">O vosso amor, online. Websites de casamento elegantes e interativos, feitos à medida no Porto.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#services">O que fazemos</a>
+          <a href="#work">Como funciona</a>
+          <a href="#pricing">Planos</a>
+          <a href="#contact">Contacto</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Nó Digital. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

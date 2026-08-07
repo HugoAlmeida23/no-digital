@@ -1,22 +1,11 @@
 {
-  "name": "no-digital-marketing",
-  "type": "module",
-  "version": "1.0.0",
+  "name": "no-digital",
+  "version": "2.0.0",
+  "description": "Nó Digital — Interactive wedding website landing page",
+  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/tailwind": "^5.1.4",
-    "@supabase/supabase-js": "^2.106.0",
-    "astro": "^4.16.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.0.0",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.6.0"
+    "dev": "npx serve . -l 3000 --no-clipboard",
+    "build": "echo 'Static site — no build needed. Deploy index.html, styles.css, main.js, and public/ as-is.'",
+    "preview": "npx serve . -l 4000"
   }
 }
