@@ -287,8 +287,11 @@
   });
 
   // ============================================================
-  // CONTACT FORM
+  // CONTACT FORM (Supabase)
   // ============================================================
+  const SUPABASE_URL = 'https://chmwewvqdomtzmssceyn.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_owAbi190JRoicXSVWA-oSA_HmjuOh-6';
+
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
 
@@ -298,6 +301,8 @@
       const formData = new FormData(form);
       const name = formData.get('name');
       const email = formData.get('email');
+      const phone = formData.get('phone');
+      const wedding_date = formData.get('date');
       const message = formData.get('message');
 
       feedback.className = 'form-feedback';
@@ -310,15 +315,51 @@
         return;
       }
 
+      // Disable button while sending
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.querySelector('.btn-text').textContent = 'A enviar...';
+
       try {
-        feedback.innerHTML = '<strong>Mensagem enviada com sucesso!</strong> Respondemos em menos de 24 horas.';
-        feedback.className = 'form-feedback success';
-        feedback.style.display = 'block';
-        form.reset();
+        const payload = { name, email, message };
+        if (phone) payload.phone = phone;
+        if (wedding_date) payload.wedding_date = wedding_date;
+
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          feedback.innerHTML = '<strong>Mensagem enviada com sucesso!</strong> Respondemos em menos de 24 horas.';
+          feedback.className = 'form-feedback success';
+          feedback.style.display = 'block';
+          form.reset();
+        } else if (res.status === 409) {
+          feedback.innerHTML = '<strong>Já recebemos o vosso contacto!</strong> Respondemos em breve, fiquem descansados.';
+          feedback.className = 'form-feedback success';
+          feedback.style.display = 'block';
+        } else {
+          const error = await res.json().catch(() => null);
+          console.error('Supabase error:', res.status, error);
+          feedback.textContent = 'Erro ao enviar. Tentem novamente ou contactem diretamente.';
+          feedback.className = 'form-feedback error';
+          feedback.style.display = 'block';
+        }
       } catch (err) {
-        feedback.textContent = 'Erro ao enviar. Tentem novamente ou contactem diretamente.';
+        console.error('Network error:', err);
+        feedback.textContent = 'Erro de ligação. Verifiquem a internet e tentem novamente.';
         feedback.className = 'form-feedback error';
         feedback.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.btn-text').textContent = 'Enviar mensagem';
       }
     });
   }
