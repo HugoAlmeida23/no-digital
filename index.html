@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="legal.css" />
 </head>
 <body>
   <!-- Soft texture -->
@@ -493,21 +494,34 @@
           <a href="#" class="nav-logo">
             <span class="logo-no">Nó</span><span class="logo-digital">Digital</span>
           </a>
-          <p class="footer-desc">O vosso amor, online. Websites de casamento elegantes e interativos, feitos à medida no Porto.</p>
+          <p class="footer-desc">O vosso amor, online. Websites de casamento elegantes e interativos, feitos à medida.</p>
         </div>
-        <div class="footer-links">
-          <a href="#services">O que fazemos</a>
-          <a href="#work">Como funciona</a>
-          <a href="#pricing">Planos</a>
-          <a href="#contact">Contacto</a>
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Nó Digital</h4>
+            <a href="#services">O que fazemos</a>
+            <a href="#work">Como funciona</a>
+            <a href="#pricing">Planos</a>
+            <a href="#contact">Contacto</a>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Informação</h4>
+            <a href="/termos-condicoes.html">Termos e condições</a>
+            <a href="/politica-privacidade.html">Política de privacidade</a>
+            <a href="/politica-cookies.html">Política de cookies</a>
+            <a href="/resolucao-litigios.html">Resolução de litígios</a>
+            <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer">Livro de Reclamações</a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Nó Digital. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Nó Digital. Feito em Portugal com &#10084;</p>
+        <button class="cookie-settings-btn" id="cookie-settings-btn">Gerir preferências de cookies</button>
       </div>
     </div>
   </footer>
 
+  <script src="cookies.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
